@@ -22,6 +22,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.buscaminaslp.CreditosActivity"
+            android:label="@string/title_activity_creditos" >
+        </activity>
+        <activity
+            android:name="com.example.buscaminaslp.JugarActivity"
+            android:label="@string/title_activity_jugar" >
+        </activity>
     </application>
 
 </manifest>

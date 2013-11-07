@@ -4,5 +4,7 @@
     <string name="app_name">buscaminasLP</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Proyecto Buscaminas \nJose Velez \nKevin Campuzano \nLeonel Ramirez</string>
+    <string name="title_activity_creditos">CreditosActivity</string>
+    <string name="title_activity_jugar">JugarActivity</string>
 
 </resources>

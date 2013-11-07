@@ -8,9 +8,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MenuPrincipal" >
 
-    <TextView
+    <Button
+        android:id="@+id/Jugar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="79dp"
+        android:text="Jugar" />
+
+    <Button
+        android:id="@+id/Score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Jugar"
+        android:layout_alignRight="@+id/Jugar"
+        android:layout_below="@+id/Jugar"
+        android:layout_marginTop="34dp"
+        android:text="Score" />
+
+    <Button
+        android:id="@+id/Creditos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Score"
+        android:layout_alignRight="@+id/Score"
+        android:layout_below="@+id/Score"
+        android:layout_marginTop="41dp"
+        android:text="Creditos" />
 
 </RelativeLayout>
