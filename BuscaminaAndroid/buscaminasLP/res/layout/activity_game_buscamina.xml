@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout 
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="2"
+	    android:gravity="center">
+    	<TextView  
+			android:id="@+id/txtBuscamina"
+	    	android:layout_width="fill_parent" 
+	    	android:layout_height="wrap_content" 
+	    	android:gravity="center"
+	    	android:text="BUSCAMINAS"
+	    	android:textStyle="bold"
+	    	android:textSize="25sp"
+	    	android:textColor="#000000"
+	    />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Chronometer
+            android:id="@+id/chronometer1"
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_weight="0.26"
+            android:text="Chronometer" />
+        
+        <LinearLayout
+            android:layout_width="175dp"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+	        <Button
+	            android:id="@+id/btnReiniciar"
+	            android:layout_width="wrap_content"
+	            android:layout_height="40dp"
+	            android:onClick="presionado"
+	            android:text="Reiniciar" />
+	        
+	        <TextView  
+				android:id="@+id/txtName"		
+		    	android:layout_width="fill_parent" 
+		    	android:layout_height="wrap_content" 
+		    	android:gravity="left"
+		    	android:textColor="#000000"    	
+		    	android:textStyle="bold"
+		    	android:text="Name: "
+		    />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="262dp"
+        android:layout_height="211dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1" >
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.27"
+            android:text="New"/>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.32"
+            android:text="Restart" />
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="0.30"
+            android:text="Menu" />
+    </LinearLayout>
+
+</LinearLayout>

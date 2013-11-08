@@ -7,5 +7,7 @@
     <string name="title_activity_creditos">CreditosActivity</string>
     <string name="title_activity_jugar">JugarActivity</string>
     <string name="title_activity_rules">RulesActivity</string>
+    <string name="title_activity_game_buscamina">GameBuscamina</string>
+    <string name="title_activity_score">ScoreActivity</string>
 
 </resources>

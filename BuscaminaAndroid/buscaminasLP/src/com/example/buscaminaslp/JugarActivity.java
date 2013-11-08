@@ -29,7 +29,7 @@ public class JugarActivity extends Activity {
 					Toast.makeText(JugarActivity.this,"No Ingreso Nombre",Toast.LENGTH_LONG).show();
 				}
 				else{
-					Intent intent = new Intent(JugarActivity.this,RulesActivity.class);
+					Intent intent = new Intent(JugarActivity.this,GameBuscamina.class);
 					startActivity(intent);
 				}
 			}
