@@ -17,7 +17,6 @@ public class MenuPrincipal extends Activity {
 		
 		Button Jugar = (Button)findViewById(R.id.Jugar);
 		Jugar.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MenuPrincipal.this, JugarActivity.class);
@@ -25,9 +24,17 @@ public class MenuPrincipal extends Activity {
 			}
 		});
 		
+		Button Score = (Button)findViewById(R.id.Score);
+		Score.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				//Intent intent = new Intent(MenuPrincipal.this, JugarActivity.class);
+				//startActivity(intent);
+			}
+		});
+		
 		Button Creditos = (Button)findViewById(R.id.Creditos);
 		Creditos.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(MenuPrincipal.this, CreditosActivity.class);
