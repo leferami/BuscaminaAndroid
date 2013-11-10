@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#AAC1E2" >
+    android:background="#FFFFFF" >
     
     <LinearLayout 
 	    android:orientation="vertical"
@@ -54,8 +54,8 @@
 		   	>
                 <Button
         			android:id="@+id/Jugar"
-        			android:layout_width="200dp"
-			        android:layout_height="200dp"
+        			android:layout_width="100dp"
+			        android:layout_height="70dp"
 			        android:layout_weight="1"
 			        android:background="@drawable/play"
 			    />
@@ -80,10 +80,10 @@
 		   	>
                 <Button
 			        android:id="@+id/Score"
-			        android:layout_width="200dp"
-			        android:layout_height="200dp"
+			        android:layout_width="100dp"
+			        android:layout_height="70dp"
 			        android:layout_weight="1"
-			        android:background="@drawable/puntaje"
+			        android:background="@drawable/score"
 			        
 		        />
                  <TextView  
@@ -92,7 +92,7 @@
 				  	android:gravity="center"
 				  	android:textStyle="bold"
 				  	android:textColor="#000000"
-				  	android:text="Puntaje"
+				  	android:text="Puntajes"
 			  	/>
             </LinearLayout>
         </TableRow>
@@ -115,11 +115,11 @@
 		   	>
                 <Button
                     android:id="@+id/Instrucciones"
-			    	android:layout_width="150dp" 
-			    	android:layout_height="150dp" 
+			    	android:layout_width="100dp" 
+			    	android:layout_height="60dp" 
 			    	android:layout_weight="1" 
 			    	android:padding="20px"
-			    	android:background="@drawable/instrucciones" 
+			    	android:background="@drawable/rules" 
 		    	/>
                 <TextView  
 				  	android:layout_width="fill_parent" 
@@ -127,7 +127,7 @@
 				  	android:gravity="center"
 				  	android:textStyle="bold"
 				  	android:textColor="#000000"
-				  	android:text="Instrucciones"
+				  	android:text="Reglas"
 			  	/>
             </LinearLayout>
             
@@ -141,10 +141,10 @@
 		   	>
                 <Button
 			        android:id="@+id/Creditos"
-			        android:layout_width="150dp"
-			        android:layout_height="150dp"
+			        android:layout_width="100dp"
+			        android:layout_height="50dp"
 			        android:layout_weight="1"
-			        android:background="@drawable/credito"  
+			        android:background="@drawable/developers"  
 			    />
                 <TextView  
 				  	android:layout_width="fill_parent" 
@@ -152,7 +152,7 @@
 				  	android:gravity="center"
 				  	android:textStyle="bold"
 				  	android:textColor="#000000"
-				  	android:text="Creditos"
+				  	android:text="Desarrollladores"
 			  	/>
             </LinearLayout>
         </TableRow>
@@ -172,6 +172,7 @@
     	android:textColor="#000000"    	
     	android:textStyle="bold"
     	android:text="ESPOL"
+    	android:textSize="25sp"
     />
     <TextView  	
     	android:layout_width="fill_parent" 
