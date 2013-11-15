@@ -1,24 +1,35 @@
 package com.example.buscaminaslp;
 
-import TableroBuscaminas.Tablero;
 import TableroBuscaminas.Casilla;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
+import android.widget.ImageButton;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
+import android.widget.TableRow.LayoutParams;
 
-public class GameBuscamina extends Activity implements OnTouchListener {
+public class GameBuscamina extends Activity {
 
-	private Tablero fondo;
+	private String nivelBuscaminas;
 	int x; 
 	int y;
 	private boolean activo = true;
-	int fila = 10, columna = 10;
+	int filasTablero = 10, columnasTablero = 10;
+	private int numeroTotalMinas = 25;
+	private Casilla casillas[][]; 
+	private int dimensionCasillas = 50; 
+	private int rellenoCasillas = 2;	
+	
+	private ImageButton botonIniciar;
+	private TableLayout mineField;
+	
+	private int segundos = 0;
+	private boolean perdida;
+	private int encontrarMinas; 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
@@ -27,43 +38,60 @@ public class GameBuscamina extends Activity implements OnTouchListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_buscamina);
 		
+		nivelBuscaminas = (String) getIntent().getSerializableExtra("nivel");
+		TextView titulo = (TextView) findViewById(R.id.txtBuscamina);
+		titulo.setText("Buscamina - " +nivelBuscaminas);
 		
-		LinearLayout linearLayout1 = (LinearLayout) findViewById(R.id.linearLayout1);
-		fondo = new Tablero(this);
-		fondo.setOnTouchListener(this);
-		linearLayout1.addView(fondo);
-		fondo.casillas = new Casilla[fila][columna];
+		if(nivelBuscaminas.equals("Facil")){
+			filasTablero = 8;
+			columnasTablero = 8;
+		}else if(nivelBuscaminas.equals("Intermedio")){
+			filasTablero = 8;
+			columnasTablero = 10;
+		}else if(nivelBuscaminas.equals("Dificil")){
+			filasTablero = 10;
+			columnasTablero = 12;
+		}else{
+			filasTablero = 9;
+			columnasTablero = 5;
+		}
 		
-		for (int f = 0; f < fila; f++) {
-			for (int c = 0; c < columna; c++) {
-				fondo.casillas[f][c] = new Casilla();			
+		mineField = (TableLayout)findViewById(R.id.MineField);
+		presionado();	
+	}
+	
+	public void presionado(){
+		createMineField();
+		showMineField();
+		encontrarMinas = numeroTotalMinas;
+		perdida = false;
+		segundos = 0;
+	}
+	
+	private void showMineField(){
+		for (int row = 1; row < filasTablero + 1; row++){
+			TableRow tableRow = new TableRow(this);  
+			tableRow.setLayoutParams(new LayoutParams((dimensionCasillas + 2 * rellenoCasillas) * columnasTablero, dimensionCasillas + 2 * rellenoCasillas));
+
+			for (int column = 1; column < columnasTablero + 1; column++){
+				casillas[row][column].setLayoutParams(new LayoutParams(dimensionCasillas + 2 * rellenoCasillas,dimensionCasillas + 2 * rellenoCasillas)); 
+				casillas[row][column].setPadding(rellenoCasillas, rellenoCasillas, rellenoCasillas, rellenoCasillas);
+				tableRow.addView(casillas[row][column]);
 			}
+			mineField.addView(tableRow,new TableLayout.LayoutParams((dimensionCasillas + 2 * rellenoCasillas) * columnasTablero, dimensionCasillas + 2 * rellenoCasillas));  
 		}
 	}
 	
-	public void presionado(View v){
-		fondo.casillas = new Casilla[fila][columna];
-		for (int f = 0; f < fila; f++) {
-			for (int c = 0; c < columna; c++) {
-				fondo.casillas[f][c] = new Casilla();				
+	private void createMineField(){
+		casillas = new Casilla[filasTablero + 2][columnasTablero + 2];
+
+		for (int row = 0; row < filasTablero + 2; row++){
+			for (int column = 0; column < columnasTablero + 2; column++){	
+				casillas[row][column] = new Casilla(this);
+				casillas[row][column].set_Defecto();
 			}
 		}
-		fondo.invalidate();
 	}
-	
-	@Override
-	public boolean onTouch(View arg0, MotionEvent event) {
-		if(activo){
-			
-			for (int f = 0; f < fila; f++) {
-				for (int c = 0; c < columna; c++) {
-					if(fondo.casillas[f][c].dentro((int) event.getX(), (int) event.getY())){
-						fondo.casillas[f][c].destapado = true;
-						fondo.invalidate();
-					}
-				}
-			}
-		}
-		return true;
-	}
+
+
 }

@@ -1,22 +1,37 @@
 package TableroBuscaminas;
 
-public class Casilla {
-	public int x;
-	public int y;
-	public int ancho;
-	public int contenido=0;
-	public boolean destapado = false ;
+
+
+import com.example.buscaminaslp.R;
+
+import android.content.Context;
+import android.widget.Button;
+
+public class Casilla extends Button{
+	private boolean cubierto; 
+	private boolean mina; 
+	private boolean marcado;
+	private boolean marcar; 
+	private boolean presionado; 
+	private int numeroMinasAlrededor; 
 	
-	public void fijarxy(int x, int y, int ancho){
-		this.x = x;
-		this.y = y;
-		this.ancho = ancho;
+	
+	
+	public Casilla (Context context){
+		super(context);
 	}
-	public boolean dentro(int xx, int yy){
-		if(xx>=this.x && xx>=this.x+ancho && yy>=this.y && yy>=this.y+ancho){
-			return true;
-		}else{
-			return false;
-		}
+	
+	public void set_Defecto()
+	{
+		cubierto = true;
+		mina = false;
+		marcado = false;
+		marcar = false;
+		presionado = true;
+		numeroMinasAlrededor = 0;
+
+		this.setBackgroundResource(R.drawable.casilla_azul);
 	}
+	
 }
+
