@@ -1,87 +1,205 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"    
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".JugarActivity" >
-
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linearLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="0,2" >
+    
+    <TableRow>
         <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="36dp"
-        android:text="Ingrese su nombre: "
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-        
-        <EditText
-	        android:id="@+id/txtName"
-	        android:layout_width="wrap_content"
+			android:layout_width="fill_parent"
+			android:layout_height="30dp"
+			android:gravity="center"/>
+    </TableRow>
+	
+    <TableRow
+	    android:gravity="center">
+		<TextView
+	        android:id="@+id/ingresarNombre"
+	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_alignLeft="@+id/textView1"
-	        android:layout_alignParentRight="true"
-	        android:layout_below="@+id/textView1"
-	        android:layout_marginTop="18dp"
-	        android:ems="10" >
+	        android:layout_marginLeft="15dp"
+	        android:text="@string/ingrese_su_nombre_"
+	        android:textStyle="bold"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	</TableRow>
+	<TableRow>
+		<EditText
+	        android:id="@+id/txtNombre"
+	        android:gravity="center"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:ems="15" >
 	        <requestFocus />
    		 </EditText>
+	
+	</TableRow>
+	
+    <TableRow>
+        <TextView
+			android:layout_width="fill_parent"
+			android:layout_height="25dp"
+			android:gravity="center"/>
+    </TableRow>
+	
+     <TableRow>
+    	<TextView
+	        android:id="@+id/txtNivel"
+	        android:layout_width="250dp"
+	        android:layout_height="fill_parent"
+	        android:gravity="center"
+	        android:text="@string/nivel"
+	        android:textStyle="bold"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+    </TableRow>
+    
+    <TableRow
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+	    android:gravity="center">
 
-    <RadioGroup
-        android:id="@+id/radioGroup1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true" >
+	    <RadioGroup
+	        android:id="@+id/radioGroup1"
+	        android:gravity="center"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content">
+	
+	        <RadioButton
+	            android:id="@+id/rbtFacil"
+	            android:layout_width="200dp"
+	            android:layout_height="fill_parent"
+	            android:checked="true"
+	            android:text="@string/facil" />
+	
+	        <RadioButton
+	            android:id="@+id/rbtIntermedio"
+	            android:layout_width="200dp"
+	            android:layout_height="fill_parent"
+	            android:text="@string/intermedio" />
+	
+	        <RadioButton
+	            android:id="@+id/rbtDificil"
+	            android:layout_width="200dp"
+	            android:layout_height="fill_parent"
+	            android:text="@string/dificil" />
+	
+	        <RadioButton
+	            android:id="@+id/rbtPersonalizado"
+	            android:layout_width="200dp"
+	            android:layout_height="fill_parent"
+	            android:text="@string/personalizado" />
+	
+	    </RadioGroup>
+	</TableRow>
 
-        <RadioButton
-            android:id="@+id/rbtFacil"
+    <TableRow>
+        <TextView
+			android:layout_width="fill_parent"
+			android:layout_height="20dp"
+			android:gravity="center"/>
+    </TableRow>
+	
+    <TableRow 
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+        
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="Facil" />
+            android:layout_height="80dp" 
+            android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/rbtIntermedio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Intermedio" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
 
-        <RadioButton
-            android:id="@+id/rbtDificil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dificil" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
 
-        <RadioButton
-            android:id="@+id/rbtPersonalizado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Personalizado" />
+                    <TextView
+                        android:id="@+id/filasPersonalizados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/filas_"/>
 
-    </RadioGroup>
+                    <EditText
+                        android:id="@+id/txtFilasPersonalizados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" 
+                        android:ems="5"/>
 
-    <Button
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/txtName"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/radioGroup1"
-        android:layout_marginTop="32dp"
-        android:text="Next" />
+                </LinearLayout>
 
-    <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/radioGroup1"
-        android:layout_alignLeft="@+id/txtName"
-        android:text="Nivel"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" >
 
-</RelativeLayout>
+                    <TextView
+                        android:id="@+id/columnasPersonalizados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/columnas_" />
+
+                    <EditText
+                        android:id="@+id/txtColumnasPersonalizados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" 
+                        android:ems="5"/>
+
+                </LinearLayout>
+                
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:id="@+id/numeroMinas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/numero_de_minas_" />
+
+                    <EditText
+                        android:id="@+id/txtNumeroMinas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ems="10" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+            
+        </LinearLayout>
+	</TableRow>
+	
+    <TableRow>
+        <TextView
+			android:layout_width="fill_parent"
+			android:layout_height="25dp"
+			android:gravity="center"/>
+    </TableRow>
+	
+    <TableRow>
+
+        <Button
+            android:id="@+id/btnNext"
+            android:layout_width="fill_parent"
+            android:layout_height="30dp"
+            android:text="@string/next" />
+    
+    </TableRow>
+</TableLayout>

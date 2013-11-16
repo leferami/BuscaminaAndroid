@@ -13,36 +13,62 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class JugarActivity extends Activity {
+	
 	private RadioGroup radioGroupNivel;
 	int seleccionaIdNivel;
 	RadioButton radioButtonNivel;
+	private String nivel;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_jugar);
 		
-		Button rules = (Button)findViewById(R.id.btnNext);
+		EditText filasP, columnasP, numeroMinasP;
+		filasP = (EditText) findViewById(R.id.txtFilasPersonalizados);
+		columnasP = (EditText) findViewById(R.id.txtColumnasPersonalizados);
+		numeroMinasP = (EditText) findViewById(R.id.txtNumeroMinas);
+		
+		radioGroupNivel = (RadioGroup) findViewById(R.id.radioGroup1);
+		seleccionaIdNivel = radioGroupNivel.getCheckedRadioButtonId();
+		radioButtonNivel = (RadioButton) findViewById(seleccionaIdNivel);
+		
+		nivel = radioButtonNivel.getText().toString();
+				
+		
+		if(nivel.equals("Facil")){
+			filasP.setEnabled(true);
+			columnasP.setEnabled(true);
+			numeroMinasP.setEnabled(true);
+			
+		}else if(nivel.equals("Intermedio")){
+			filasP.setEnabled(false);
+			columnasP.setEnabled(false);
+			numeroMinasP.setEnabled(false);
+		}
+		
+		Button rules = (Button)findViewById(R.id.btnNext);		
 		rules.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				EditText name = (EditText)findViewById(R.id.txtName);
+				// TODO Auto-generated method stub
+				EditText name = (EditText)findViewById(R.id.txtNombre);
 				String nombre = name.getText().toString();
 				if(nombre.matches("")){
 					Toast.makeText(JugarActivity.this,"No Ingreso Nombre",Toast.LENGTH_LONG).show();
 				}
 				else{
-					radioGroupNivel = (RadioGroup) findViewById(R.id.radioGroup1);
-					seleccionaIdNivel = radioGroupNivel.getCheckedRadioButtonId();
-					radioButtonNivel = (RadioButton) findViewById(seleccionaIdNivel);	
 					Intent intent = new Intent(JugarActivity.this,GameBuscamina.class);
-					intent.putExtra("nivel", radioButtonNivel.getText().toString());
+					intent.putExtra("nivel", nivel);
 					startActivity(intent);
 				}
 			}
-		});
+		});//Boton NEXT
+		
+		
 	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

@@ -9,5 +9,19 @@
     <string name="title_activity_rules">RulesActivity</string>
     <string name="title_activity_game_buscamina">GameBuscamina</string>
     <string name="title_activity_score">ScoreActivity</string>
+    <string name="ingrese_su_nombre_">"Ingrese su nombre: "</string>
+    <string name="dificil">Dificil</string>
+    <string name="intermedio">Intermedio</string>
+    <string name="facil">Facil</string>
+    <string name="personalizado">Personalizado</string>
+    <string name="next">Siguiente</string>
+    <string name="nivel">Nivel</string>
+    <string name="filas_">FILAS:</string>
+    <string name="columnas_">COLUMNAS:</string>
+    <string name="numero_de_minas_">"NUMERO DE MINAS: "</string>
+    <string name="buscaminas">BUSCAMINAS</string>
+    <string name="reiniciar">Reiniciar</string>
+    <string name="salir">Salir</string>
+    <string name="_000">000</string>
 
 </resources>

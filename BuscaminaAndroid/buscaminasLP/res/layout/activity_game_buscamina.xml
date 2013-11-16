@@ -5,28 +5,53 @@
     android:layout_height="fill_parent"
     android:stretchColumns="0,2" >
 
+     <TableRow>
+		<TextView
+			android:layout_column="0"
+			android:layout_width="fill_parent"
+			android:layout_height="50dp"
+			android:layout_span="3"
+			android:padding="5dip"/>
+	</TableRow>
     <TableRow
 	    android:gravity="center">
-	    
     	<TextView  
 			android:id="@+id/txtBuscamina"
 	    	android:layout_width="fill_parent" 
-	    	android:layout_height="wrap_content" 
-	    	android:gravity="center"
-	    	android:text="BUSCAMINAS"
+	    	android:layout_height="fill_parent" 
+	    	android:text="@string/buscaminas"
 	    	android:textStyle="bold"
 	    	android:textSize="25sp"
 	    	android:textColor="#000000"/>
     </TableRow>
-
-    <TableRow
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:orientation="horizontal" >
-    </TableRow>
-    
+    <TableRow>
+		<TextView
+			android:layout_column="0"
+			android:layout_width="fill_parent"
+			android:layout_height="60dp"
+			android:layout_span="3"
+			android:padding="5dip"/>
+	</TableRow>
+    <TableRow>
+		<TextView
+		    android:id="@+id/Cronometro"
+			android:layout_column="0"
+			android:layout_width="fill_parent"
+			android:layout_height="80dp"
+			android:gravity="center_horizontal"
+			android:padding="5dip"
+			android:textSize="30sp"
+			android:text="@string/_000"/>
+	</TableRow>
+	<TableRow>
+		<TextView
+			android:layout_column="0"
+			android:layout_width="fill_parent"
+			android:layout_height="60dp"
+			android:layout_span="3"
+			android:padding="5dip"/>
+	</TableRow>
+	
    <TableRow>
 		<TableLayout 
     		android:id="@+id/MineField"
@@ -43,7 +68,7 @@
 		<TextView
 			android:layout_column="0"
 			android:layout_width="fill_parent"
-			android:layout_height="100px"
+			android:layout_height="150dp"
 			android:layout_span="3"
 			android:padding="5dip"/>
 	</TableRow>
@@ -57,24 +82,24 @@
 
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/restart"
             android:layout_width="75dp"
             android:layout_height="50dp"
             android:layout_weight="0.32"
-            android:text="Restart" />
+            android:text="@string/reiniciar" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/salir"
             android:layout_width="75dp"
             android:layout_height="50dp"
             android:layout_weight="0.30"
-            android:text="Salir" />
+            android:text="@string/salir" />
     </LinearLayout>
     <TableRow>
 		<TextView
 			android:layout_column="0"
 			android:layout_width="fill_parent"
-			android:layout_height="75px"
+			android:layout_height="75dp"
 			android:layout_span="3"
 			android:padding="5dip"/>
 	</TableRow>

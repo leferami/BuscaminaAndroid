@@ -18,7 +18,7 @@
 	    	android:gravity="center"
 	    	android:text="BUSCAMINAS"
 	    	android:textStyle="bold"
-	    	android:textSize="25sp"
+	    	android:textSize="20sp"
 	    	android:textColor="#000000"
 	    />
     	<TextView  
@@ -111,16 +111,14 @@
 			    android:layout_height="fill_parent"
 			    android:layout_weight="1"
 			    android:gravity="center"
-			    android:paddingRight="20px"
-		   	>
+			    android:paddingRight="20px">
                 <Button
                     android:id="@+id/Instrucciones"
 			    	android:layout_width="100dp" 
 			    	android:layout_height="60dp" 
 			    	android:layout_weight="1" 
 			    	android:padding="20px"
-			    	android:background="@drawable/rules" 
-		    	/>
+			    	android:background="@drawable/rules"  	/>
                 <TextView  
 				  	android:layout_width="fill_parent" 
 				  	android:layout_height="wrap_content" 
