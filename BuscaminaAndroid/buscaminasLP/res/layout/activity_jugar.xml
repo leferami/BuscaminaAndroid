@@ -1,205 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearLayout"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:stretchColumns="0,2" >
-    
-    <TableRow>
+    android:background="#FFFFFF" >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+	    android:gravity="center" >
         <TextView
-			android:layout_width="fill_parent"
-			android:layout_height="30dp"
-			android:gravity="center"/>
-    </TableRow>
-	
-    <TableRow
-	    android:gravity="center">
-		<TextView
 	        android:id="@+id/ingresarNombre"
+	        android:layout_marginLeft="40dp"
+	        android:layout_marginRight="40dp"
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_marginLeft="15dp"
 	        android:text="@string/ingrese_su_nombre_"
 	        android:textStyle="bold"
-	        android:textAppearance="?android:attr/textAppearanceMedium" />
-	</TableRow>
-	<TableRow>
-		<EditText
+	        android:textSize="20sp"
+	    	android:textColor="#000000" />
+        
+        <EditText
 	        android:id="@+id/txtNombre"
-	        android:gravity="center"
+	        android:layout_marginLeft="40dp"
+	        android:layout_marginRight="40dp"
 	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent"
-	        android:ems="15" >
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:textStyle="bold"
+	    	android:textColor="#000000"
+	    	android:ems="10" >
 	        <requestFocus />
    		 </EditText>
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <TableRow
+            android:layout_weight="1"
+			android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtNivel"
+                android:layout_width="50dp"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="@string/nivel"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold" />
+	        
+            <RadioGroup
+		        android:id="@+id/radioGroup1"
+		        android:gravity="center"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content">
+		
+		        <RadioButton
+		            android:id="@+id/rbtFacil"
+		            android:layout_width="200dp"
+		            android:layout_height="fill_parent"
+		            android:checked="true"
+		            android:text="@string/facil" />
+		
+		        <RadioButton
+		            android:id="@+id/rbtIntermedio"
+		            android:layout_width="200dp"
+		            android:layout_height="fill_parent"
+		            android:text="@string/intermedio" />
+		
+		        <RadioButton
+		            android:id="@+id/rbtDificil"
+		            android:layout_width="200dp"
+		            android:layout_height="fill_parent"
+		            android:text="@string/dificil" />
+		
+		        <RadioButton
+		            android:id="@+id/rbtPersonalizado"
+		            android:layout_width="200dp"
+		            android:layout_height="fill_parent"
+		            android:text="@string/personalizado" />
 	
-	</TableRow>
-	
-    <TableRow>
-        <TextView
-			android:layout_width="fill_parent"
-			android:layout_height="25dp"
-			android:gravity="center"/>
-    </TableRow>
-	
-     <TableRow>
-    	<TextView
-	        android:id="@+id/txtNivel"
-	        android:layout_width="250dp"
-	        android:layout_height="fill_parent"
-	        android:gravity="center"
-	        android:text="@string/nivel"
-	        android:textStyle="bold"
-	        android:textAppearance="?android:attr/textAppearanceMedium" />
-    </TableRow>
-    
-    <TableRow
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-	    android:gravity="center">
+	    	</RadioGroup>
+        </TableRow>
 
-	    <RadioGroup
-	        android:id="@+id/radioGroup1"
-	        android:gravity="center"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content">
-	
-	        <RadioButton
-	            android:id="@+id/rbtFacil"
-	            android:layout_width="200dp"
-	            android:layout_height="fill_parent"
-	            android:checked="true"
-	            android:text="@string/facil" />
-	
-	        <RadioButton
-	            android:id="@+id/rbtIntermedio"
-	            android:layout_width="200dp"
-	            android:layout_height="fill_parent"
-	            android:text="@string/intermedio" />
-	
-	        <RadioButton
-	            android:id="@+id/rbtDificil"
-	            android:layout_width="200dp"
-	            android:layout_height="fill_parent"
-	            android:text="@string/dificil" />
-	
-	        <RadioButton
-	            android:id="@+id/rbtPersonalizado"
-	            android:layout_width="200dp"
-	            android:layout_height="fill_parent"
-	            android:text="@string/personalizado" />
-	
-	    </RadioGroup>
-	</TableRow>
-
-    <TableRow>
-        <TextView
-			android:layout_width="fill_parent"
-			android:layout_height="20dp"
-			android:gravity="center"/>
-    </TableRow>
-	
-    <TableRow 
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent">
-        
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="80dp" 
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" >
-
-                    <TextView
-                        android:id="@+id/filasPersonalizados"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/filas_"/>
-
-                    <EditText
-                        android:id="@+id/txtFilasPersonalizados"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" 
-                        android:ems="5"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" >
-
-                    <TextView
-                        android:id="@+id/columnasPersonalizados"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/columnas_" />
-
-                    <EditText
-                        android:id="@+id/txtColumnasPersonalizados"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" 
-                        android:ems="5"/>
-
-                </LinearLayout>
-                
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:id="@+id/numeroMinas"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/numero_de_minas_" />
-
-                    <EditText
-                        android:id="@+id/txtNumeroMinas"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ems="10" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+        <TableRow
+            android:layout_weight="1"
+			android:gravity="center"
+			android:paddingLeft="20px"
+			android:paddingRight="20px"
+			android:paddingTop = "20px"
+			android:paddingBottom = "10px" >
             
-        </LinearLayout>
-	</TableRow>
+            <LinearLayout
+	            android:layout_width="wrap_content"
+	            android:layout_height="120dp" 
+	            android:orientation="vertical">
 	
-    <TableRow>
-        <TextView
-			android:layout_width="fill_parent"
-			android:layout_height="25dp"
-			android:gravity="center"/>
-    </TableRow>
+	            <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="horizontal" >
 	
-    <TableRow>
-
-        <Button
-            android:id="@+id/btnNext"
-            android:layout_width="fill_parent"
-            android:layout_height="30dp"
-            android:text="@string/next" />
+	                <LinearLayout
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="match_parent"
+	                    android:layout_weight="1" >
+	
+	                    <TextView
+	                        android:id="@+id/filasPersonalizados"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:layout_weight="1"
+	                        android:text="@string/filas_"/>
+	
+	                    <EditText
+	                        android:id="@+id/txtFilasPersonalizados"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:layout_weight="1" 
+	                        android:ems="5"/>
+	
+	                </LinearLayout>
+	
+	                <LinearLayout
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="match_parent"
+	                    android:layout_weight="1" >
+	
+	                    <TextView
+	                        android:id="@+id/columnasPersonalizados"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:layout_weight="1"
+	                        android:text="@string/columnas_" />
+	
+	                    <EditText
+	                        android:id="@+id/txtColumnasPersonalizados"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:layout_weight="1" 
+	                        android:ems="5"/>
+	
+	                </LinearLayout>
+	                			                
+	            </LinearLayout>
+	
+	            <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical" >
+	
+	                <LinearLayout
+	                    android:layout_width="match_parent"
+	                    android:layout_height="wrap_content" >
+	
+	                    <TextView
+	                        android:id="@+id/numeroMinas"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="@string/numero_de_minas_" />
+	
+	                    <EditText
+	                        android:id="@+id/txtNumeroMinas"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:layout_weight="1"
+	                        android:ems="10" />
+	
+	                </LinearLayout>
+	
+	            </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical" >
+	        
+            		<Button
+			            android:id="@+id/btnNext"
+			            android:layout_width="fill_parent"
+			            android:layout_height="40dp"
+			            android:text="@string/next" />
+            	</LinearLayout>
+	            
+	        </LinearLayout>	        
+            
+        </TableRow>
+        
+    </TableLayout>
+       
+    <TextView  	
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"
+    />
+    <TextView  
+		android:id="@+id/txtEspol"		
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"
+    	android:textColor="#000000"    	
+    	android:textStyle="bold"
+    	android:text="ESPOL"
+    	android:textSize="25sp"
+    />
+    <TextView  	
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"
+    />
     
-    </TableRow>
-</TableLayout>
+</LinearLayout>

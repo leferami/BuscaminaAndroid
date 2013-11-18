@@ -1,49 +1,165 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".CreditosActivity" >
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF" >
+ 	
+    <LinearLayout 
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="3"
+	    android:gravity="center">
+	    <TextView
+	        android:id="@+id/txtDesarrolladores"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="@string/desarrolladores"
+	        android:textStyle="bold"
+	    	android:textSize="40sp"
+	    	android:textColor="#000000" />
+    </LinearLayout>
+    
+ 	<LinearLayout 
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="3"
+	    android:gravity="center">
+	    <TextView
+	        android:id="@+id/txtJose"
+	        android:layout_width="300dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="@string/jose_velez"
+	        android:textStyle="bold"
+	    	android:textSize="30sp"
+	    	android:textColor="#000000" />
+	    <LinearLayout
+ 		    android:layout_width="wrap_content"
+ 		    android:layout_height="wrap_content"
+ 		    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Desarrolladores"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+ 		    <TextView
+ 		        android:layout_width="fill_parent"
+ 		        android:layout_height="wrap_content"
+ 		        android:gravity="center"
+ 		        android:text="josanvel@espol.edu.ec"
+ 		        android:textColor="#000000"
+ 		        android:textSize="20sp"
+ 		        android:textStyle="bold" />
+ 		    <TextView
+ 		        android:layout_width="fill_parent"
+ 		        android:layout_height="wrap_content"
+ 		        android:gravity="center"
+ 		        android:text="www.facebook.com/jvelezgomez"
+ 		        android:textColor="#000000"
+ 		        android:textSize="20sp"
+ 		        android:textStyle="bold" />
+ 		</LinearLayout>
+    </LinearLayout>
+    
+ 	<LinearLayout 
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="3"
+	    android:gravity="center"> 		    
+	    <TextView
+	        android:id="@+id/txtKevin"
+	        android:layout_width="300dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="@string/kevin_campuzano" 
+	        android:textStyle="bold"
+	    	android:textSize="30sp"
+	    	android:textColor="#000000"/>
+	    
+	    <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" >
+	        <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="kevcamp@espol.edu.ec"
+	        android:textStyle="bold"
+	    	android:textSize="20sp"
+	    	android:textColor="#000000"/>
+	        <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="www.facebook.com/kevin.campuzano"
+	        android:textStyle="bold"
+	    	android:textSize="20sp"
+	    	android:textColor="#000000"/>
+	    </LinearLayout>
+	    
+	</LinearLayout>
+	
+ 	<LinearLayout 
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="3"
+	    android:gravity="center">
+	    <TextView
+	        android:id="@+id/txtLeonel"
+	        android:layout_width="300dp"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="@string/leonel_ramirez"
+	        android:textStyle="bold"
+	    	android:textSize="30sp"
+	    	android:textColor="#000000"/>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp"
-        android:text="Jose Velez"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    <LinearLayout
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" >
+	        <TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="leferami@espol.edu.ec"
+	        android:textStyle="bold"
+	    	android:textSize="20sp"
+	    	android:textColor="#000000"/>
+	        <TextView
+	        android:id="@+id/txtLeonel"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="www.facebook.com/leonel.ramirez.376695"
+	        android:textStyle="bold"
+	    	android:textSize="20sp"
+	    	android:textColor="#000000"/>
+	    </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp"
-        android:text="Kevin Campuzano"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+	</LinearLayout>
+	
+ 	<TextView  	
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center" />
+    
+    <TextView  
+		android:id="@+id/txtEspol"		
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"
+    	android:textColor="#000000"    	
+    	android:textStyle="bold"
+    	android:text="@string/espol"
+    	android:textSize="25sp"/>
+    
+    <TextView  	
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"  />
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
-        android:text="Leonel Ramirez"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-</RelativeLayout>
+</LinearLayout>

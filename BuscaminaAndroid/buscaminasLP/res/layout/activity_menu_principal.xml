@@ -9,56 +9,44 @@
 	    android:orientation="vertical"
 	    android:layout_width="fill_parent"
 	    android:layout_height="fill_parent"
-	    android:layout_weight="2"
+	    android:layout_weight="3"
 	    android:gravity="center">
     	<TextView  
 			android:id="@+id/txtBuscamina"
 	    	android:layout_width="fill_parent" 
 	    	android:layout_height="wrap_content" 
 	    	android:gravity="center"
-	    	android:text="BUSCAMINAS"
+	    	android:text="@string/buscaminas"
 	    	android:textStyle="bold"
-	    	android:textSize="20sp"
+	    	android:textSize="30sp"
 	    	android:textColor="#000000"
 	    />
-    	<TextView  
-			android:id="@+id/txPerfil"
-	    	android:layout_width="fill_parent" 
-	    	android:layout_height="wrap_content" 
-	    	android:gravity="center"
-	    	android:text="PROYECTO"
-	    	android:textStyle="bold"
-	    	android:textColor="#000000"
-	    />
+    	
     </LinearLayout>
 
     <TableLayout 
 	    android:layout_width="fill_parent"
 		android:layout_height="fill_parent"
-		android:layout_weight="1"
-	>
+		android:layout_weight="1">
         <TableRow
 			android:layout_weight="1"
 			android:gravity="center"
 			android:paddingLeft="20px"
 			android:paddingRight="20px"
-			android:paddingBottom = "10px"
-		>
+			android:paddingBottom = "10px">
             <LinearLayout 
 			    android:orientation="vertical"
 			    android:layout_width="fill_parent"
 			    android:layout_height="fill_parent"
 			    android:layout_weight="1"
 			    android:gravity="center"
-			    android:paddingRight="20px"
-		   	>
+			    android:paddingRight="20px"	>
                 <Button
         			android:id="@+id/Jugar"
         			android:layout_width="100dp"
 			        android:layout_height="70dp"
 			        android:layout_weight="1"
-			        android:background="@drawable/play"
-			    />
+			        android:background="@drawable/play"/>
                 
                 <TextView  
 				  	android:layout_width="fill_parent" 
@@ -66,8 +54,7 @@
 				  	android:gravity="center"
 				  	android:textStyle="bold"
 				  	android:textColor="#000000"
-				  	android:text="Nuevo Juego"
-			  	/>
+				  	android:text="@string/nuevo_juego"/>
             </LinearLayout>
             
             <LinearLayout 
@@ -79,7 +66,7 @@
 			    android:paddingLeft="20px"
 		   	>
                 <Button
-			        android:id="@+id/Score"
+			        android:id="@+id/Puntajes"
 			        android:layout_width="100dp"
 			        android:layout_height="70dp"
 			        android:layout_weight="1"
@@ -92,7 +79,7 @@
 				  	android:gravity="center"
 				  	android:textStyle="bold"
 				  	android:textColor="#000000"
-				  	android:text="Puntajes"
+				  	android:text="@string/puntajes"
 			  	/>
             </LinearLayout>
         </TableRow>
@@ -103,8 +90,7 @@
 			android:paddingLeft="20px"
 			android:paddingRight="20px"
 			android:paddingTop = "20px"
-			android:paddingBottom = "10px"
-		>
+			android:paddingBottom = "10px">
             <LinearLayout 
 			    android:orientation="vertical"
 			    android:layout_width="fill_parent"
@@ -113,7 +99,7 @@
 			    android:gravity="center"
 			    android:paddingRight="20px">
                 <Button
-                    android:id="@+id/Instrucciones"
+                    android:id="@+id/Reglas"
 			    	android:layout_width="100dp" 
 			    	android:layout_height="60dp" 
 			    	android:layout_weight="1" 
@@ -125,7 +111,7 @@
 				  	android:gravity="center"
 				  	android:textStyle="bold"
 				  	android:textColor="#000000"
-				  	android:text="Reglas"
+				  	android:text="@string/reglas"
 			  	/>
             </LinearLayout>
             
@@ -150,7 +136,7 @@
 				  	android:gravity="center"
 				  	android:textStyle="bold"
 				  	android:textColor="#000000"
-				  	android:text="Desarrollladores"
+				  	android:text="@string/desarrolladores"
 			  	/>
             </LinearLayout>
         </TableRow>
@@ -160,8 +146,8 @@
     <TextView  	
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content" 
-    	android:gravity="center"
-    />
+    	android:gravity="center" />
+    
     <TextView  
 		android:id="@+id/txtEspol"		
     	android:layout_width="fill_parent" 
@@ -169,14 +155,13 @@
     	android:gravity="center"
     	android:textColor="#000000"    	
     	android:textStyle="bold"
-    	android:text="ESPOL"
-    	android:textSize="25sp"
-    />
+    	android:text="@string/espol"
+    	android:textSize="25sp"/>
+    
     <TextView  	
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content" 
-    	android:gravity="center"
-    />
+    	android:gravity="center"  />
     
     
 </LinearLayout>

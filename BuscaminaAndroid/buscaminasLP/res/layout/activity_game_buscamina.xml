@@ -1,85 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linearLayout"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:stretchColumns="0,2" >
+    android:background="#FFFFFF" >
 
-     <TableRow>
-		<TextView
-			android:layout_column="0"
-			android:layout_width="fill_parent"
-			android:layout_height="50dp"
-			android:layout_span="3"
-			android:padding="5dip"/>
-	</TableRow>
-    <TableRow
+    <LinearLayout 
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="3"
 	    android:gravity="center">
-    	<TextView  
+	    
+        <TextView  
 			android:id="@+id/txtBuscamina"
 	    	android:layout_width="fill_parent" 
-	    	android:layout_height="fill_parent" 
+	    	android:layout_height="wrap_content" 
+	    	android:gravity="center"
 	    	android:text="@string/buscaminas"
 	    	android:textStyle="bold"
-	    	android:textSize="25sp"
+	    	android:textSize="20sp"
 	    	android:textColor="#000000"/>
-    </TableRow>
-    <TableRow>
-		<TextView
-			android:layout_column="0"
-			android:layout_width="fill_parent"
-			android:layout_height="60dp"
-			android:layout_span="3"
-			android:padding="5dip"/>
-	</TableRow>
-    <TableRow>
-		<TextView
-		    android:id="@+id/Cronometro"
-			android:layout_column="0"
-			android:layout_width="fill_parent"
-			android:layout_height="80dp"
-			android:gravity="center_horizontal"
-			android:padding="5dip"
-			android:textSize="30sp"
-			android:text="@string/_000"/>
-	</TableRow>
-	<TableRow>
-		<TextView
-			android:layout_column="0"
-			android:layout_width="fill_parent"
-			android:layout_height="60dp"
-			android:layout_span="3"
-			android:padding="5dip"/>
-	</TableRow>
-	
-   <TableRow>
-		<TableLayout 
-    		android:id="@+id/MineField"
-    		android:layout_width="360px"
-		    android:layout_height="500px"
-		    android:gravity="bottom"
-		    android:stretchColumns="*"
-		    android:layout_span="3"
-		    android:padding="5dip" >
-		</TableLayout>
-    </TableRow>
-    
-   <TableRow>
-		<TextView
-			android:layout_column="0"
-			android:layout_width="fill_parent"
-			android:layout_height="150dp"
-			android:layout_span="3"
-			android:padding="5dip"/>
-	</TableRow>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/Cronometro"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/_000"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/nombreCronometro"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/tiempo"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <!--<LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical" >
+                
+                <TextView
+                    android:id="@+id/Minas"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/_000"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/numeroMinas"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/numero_minas"
+                    android:textSize="20sp" />
+            </LinearLayout>-->
+
+        </LinearLayout>
+	 
+	 </LinearLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <TableRow>
+            
+            <TableLayout 
+	    		android:id="@+id/MineField"
+	    		android:layout_width="600px"
+			    android:layout_height="500px"
+			    android:gravity="bottom"
+			    android:stretchColumns="*"
+			    android:layout_span="1"
+			    android:padding="5dip"  >
+			</TableLayout>
+        </TableRow>
+    </TableLayout>
 
     <LinearLayout
-        android:layout_width="300dp"
-        android:layout_height="55dp"
-        android:layout_gravity="center"
-        android:layout_margin="30dp"
+        android:layout_width="fill_parent"
+        android:layout_height="75dp"
         android:orientation="horizontal" >
-
 
         <Button
             android:id="@+id/restart"
@@ -95,13 +112,21 @@
             android:layout_weight="0.30"
             android:text="@string/salir" />
     </LinearLayout>
-    <TableRow>
-		<TextView
-			android:layout_column="0"
-			android:layout_width="fill_parent"
-			android:layout_height="75dp"
-			android:layout_span="3"
-			android:padding="5dip"/>
-	</TableRow>
+    
+    <TextView  
+		android:id="@+id/txtEspol"		
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"
+    	android:textColor="#000000"    	
+    	android:textStyle="bold"
+    	android:text="@string/espol"
+    	android:textSize="25sp"/>
+    
+    <TextView  	
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"  />   
+  
+</LinearLayout>
 
-</TableLayout>

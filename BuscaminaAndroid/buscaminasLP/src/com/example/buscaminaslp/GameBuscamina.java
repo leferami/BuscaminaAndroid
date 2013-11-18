@@ -5,7 +5,6 @@ import TableroBuscaminas.Casilla;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -30,7 +29,6 @@ public class GameBuscamina extends Activity implements OnClickListener{
 	private TextView txtCronometro;
 	private TableLayout campoMinas;
 	
-	private boolean ComenzarTiempo;
 	private Button botonReiniciar;
     private Button botonSalir;
 	
@@ -48,7 +46,7 @@ public class GameBuscamina extends Activity implements OnClickListener{
 		titulo.setText("BUSCAMINA - " +nivelBuscaminas.toUpperCase());
 		
 		if(nivelBuscaminas.equals("Facil")){
-			filasTablero = 5;
+			filasTablero = 8;
 			columnasTablero = 8;
 		}else if(nivelBuscaminas.equals("Intermedio")){
 			filasTablero = 8;
@@ -144,8 +142,6 @@ public class GameBuscamina extends Activity implements OnClickListener{
 		txtCronometro.setText("000"); 
 			
 		campoMinas.removeAllViews();
-		
-		ComenzarTiempo = false;
 	}
 	
 	public void startTimer(){
