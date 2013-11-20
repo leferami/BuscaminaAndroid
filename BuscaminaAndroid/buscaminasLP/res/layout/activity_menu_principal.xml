@@ -128,7 +128,7 @@
 			        android:layout_width="100dp"
 			        android:layout_height="50dp"
 			        android:layout_weight="1"
-			        android:background="@drawable/developers"  
+			        android:background="@drawable/desarrolladores"  
 			    />
                 <TextView  
 				  	android:layout_width="fill_parent" 

@@ -50,8 +50,6 @@ public class MenuPrincipal extends Activity {
 				startActivity(intent);
 			}
 		});
-		
-		
 	}
 
 	@Override

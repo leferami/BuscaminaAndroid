@@ -5,6 +5,7 @@ package TableroBuscaminas;
 import com.example.buscaminaslp.R;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.Button;
 
 public class Casilla extends Button{
@@ -31,6 +32,20 @@ public class Casilla extends Button{
 		numeroMinasAlrededor = 0;
 
 		this.setBackgroundResource(R.drawable.casilla_azul);
+	}
+	public void setMineIcon(boolean enabled)
+	{
+		this.setText("M");
+
+		if (!enabled)
+		{
+			this.setBackgroundResource(R.drawable.square_grey);
+			this.setTextColor(Color.RED);
+		}
+		else
+		{
+			this.setTextColor(Color.BLACK);
+		}
 	}
 	
 }

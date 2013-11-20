@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">buscaminasLP</string>
+    <string name="app_name">BUSCAMINAS</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_creditos">CreditosActivity</string>
     <string name="title_activity_jugar">JugarActivity</string>
@@ -28,7 +28,7 @@
     <string name="nuevo_juego">NUEVO JUEGO</string>
     <string name="proyecto">PROYECTO</string>
     <string name="tiempo">Tiempo</string>
-    <string name="numero_minas">Numero Minas</string>
+    <string name="numero_minas">Minas</string>
     <string name="desarrolladores">DESARROLLADORES</string>
     <string name="jose_velez">Jose Velez</string>
     <string name="kevin_campuzano">Kevin Campuzano</string>
