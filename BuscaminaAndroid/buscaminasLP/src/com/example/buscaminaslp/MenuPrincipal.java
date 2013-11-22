@@ -15,7 +15,7 @@ public class MenuPrincipal extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu_principal);
 		
-		jugar = (Button)findViewById(R.id.Jugar);//BOTON JUGAR
+		jugar = (Button)findViewById(R.id.Facil);//BOTON JUGAR
 		jugar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -24,7 +24,7 @@ public class MenuPrincipal extends Activity {
 			}
 		});
 		
-		puntajes = (Button)findViewById(R.id.Puntajes);//BOTON PUNTAJES
+		puntajes = (Button)findViewById(R.id.Dificil);//BOTON PUNTAJES
 		puntajes.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -33,7 +33,7 @@ public class MenuPrincipal extends Activity {
 			}
 		});
 		
-		creditos = (Button)findViewById(R.id.Creditos);//BOTON CREDITOS
+		creditos = (Button)findViewById(R.id.Personalizado);//BOTON CREDITOS
 		creditos.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -42,7 +42,7 @@ public class MenuPrincipal extends Activity {
 			}
 		});
 		
-		reglas = (Button)findViewById(R.id.Reglas);//BOTON REGLAS
+		reglas = (Button)findViewById(R.id.Intermedio);//BOTON REGLAS
 		reglas.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

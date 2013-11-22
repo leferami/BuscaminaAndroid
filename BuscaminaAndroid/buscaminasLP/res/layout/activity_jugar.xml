@@ -4,218 +4,160 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#FFFFFF" >
+    
+    <LinearLayout 
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:layout_weight="7"
+	    android:gravity="center">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="2"
-	    android:gravity="center" >
-        <TextView
-	        android:id="@+id/ingresarNombre"
-	        android:layout_marginLeft="40dp"
-	        android:layout_marginRight="40dp"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:text="@string/ingrese_su_nombre_"
-	        android:textStyle="bold"
-	        android:textSize="20sp"
-	    	android:textColor="#000000" />
-        
-        <EditText
-	        android:id="@+id/txtNombre"
-	        android:layout_marginLeft="40dp"
-	        android:layout_marginRight="40dp"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:gravity="center"
-	        android:textStyle="bold"
-	    	android:textColor="#000000"
-	    	android:ems="10" >
-	        <requestFocus />
-   		 </EditText>
-
+    	<TextView
+    	    android:id="@+id/txtNiveles"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="wrap_content"
+    	    android:gravity="center"
+    	    android:text="@string/dificultad"
+    	    android:textColor="#000000"
+    	    android:textSize="60sp"
+    	    android:textStyle="bold" />
+    	
     </LinearLayout>
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1" >
-
+    <TableLayout 
+	    android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1">
         <TableRow
-            android:layout_weight="1"
-			android:gravity="center">
+			android:layout_weight="1"
+			android:gravity="center"
+			android:paddingLeft="20px"
+			android:paddingRight="20px"
+			android:paddingBottom = "10px">
+            <LinearLayout 
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingRight="20px"	>
 
-            <TextView
-                android:id="@+id/txtNivel"
-                android:layout_width="50dp"
-                android:layout_height="100dp"
-                android:gravity="center"
-                android:text="@string/nivel"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:textStyle="bold" />
-	        
-            <RadioGroup
-		        android:id="@+id/radioGroup1"
-		        android:gravity="center"
-		        android:layout_width="wrap_content"
-		        android:layout_height="wrap_content">
-		
-		        <RadioButton
-		            android:id="@+id/rbtFacil"
-		            android:layout_width="200dp"
-		            android:layout_height="fill_parent"
-		            android:checked="true"
-		            android:text="@string/facil" />
-		
-		        <RadioButton
-		            android:id="@+id/rbtIntermedio"
-		            android:layout_width="200dp"
-		            android:layout_height="fill_parent"
-		            android:text="@string/intermedio" />
-		
-		        <RadioButton
-		            android:id="@+id/rbtDificil"
-		            android:layout_width="200dp"
-		            android:layout_height="fill_parent"
-		            android:text="@string/dificil" />
-		
-		        <RadioButton
-		            android:id="@+id/rbtPersonalizado"
-		            android:layout_width="200dp"
-		            android:layout_height="fill_parent"
-		            android:text="@string/personalizado" />
-	
-	    	</RadioGroup>
+                <Button
+                    android:id="@+id/Facil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" 
+                    android:background="@drawable/animacion_facil"/>
+                
+                <TextView  
+				  	android:layout_width="fill_parent" 
+				  	android:layout_height="wrap_content" 
+				  	android:gravity="center"
+				  	android:textStyle="bold"
+				  	android:textColor="#000000"
+				  	android:textSize="35sp"
+				  	android:text="@string/f_cil"/>
+            </LinearLayout>
+            
+            <LinearLayout 
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingLeft="20px"
+		   	>
+
+                <Button
+                    android:id="@+id/Intermedio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/animacion_intermedio" />
+
+                 <TextView  
+				  	android:layout_width="fill_parent" 
+				  	android:layout_height="wrap_content" 
+				  	android:gravity="center"
+				  	android:textStyle="bold"
+				  	android:textColor="#000000"
+				  	android:textSize="35sp"
+				  	android:text="@string/intermedio"
+			  	/>
+            </LinearLayout>
         </TableRow>
-
+        
         <TableRow
-            android:layout_weight="1"
+			android:layout_weight="1"
 			android:gravity="center"
 			android:paddingLeft="20px"
 			android:paddingRight="20px"
 			android:paddingTop = "20px"
-			android:paddingBottom = "10px" >
+			android:paddingBottom = "10px">
+            <LinearLayout 
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingRight="20px">
+
+                <Button
+                    android:id="@+id/Dificil"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/animacion_dificil"
+                    android:padding="20px" />
+
+                <TextView  
+				  	android:layout_width="fill_parent" 
+				  	android:layout_height="wrap_content" 
+				  	android:gravity="center"
+				  	android:textStyle="bold"
+				  	android:textColor="#000000"
+				  	android:textSize="35sp"
+				  	android:text="@string/dif_cil"
+			  	/>
+            </LinearLayout>
             
-            <LinearLayout
-	            android:layout_width="wrap_content"
-	            android:layout_height="120dp" 
-	            android:orientation="vertical">
-	
-	            <LinearLayout
-	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
-	                android:orientation="horizontal" >
-	
-	                <LinearLayout
-	                    android:layout_width="wrap_content"
-	                    android:layout_height="match_parent"
-	                    android:layout_weight="1" >
-	
-	                    <TextView
-	                        android:id="@+id/filasPersonalizados"
-	                        android:layout_width="wrap_content"
-	                        android:layout_height="wrap_content"
-	                        android:layout_weight="1"
-	                        android:text="@string/filas_"/>
-	
-	                    <EditText
-	                        android:id="@+id/txtFilasPersonalizados"
-	                        android:layout_width="wrap_content"
-	                        android:layout_height="wrap_content"
-	                        android:inputType="number"
-	                        android:layout_weight="1" 
-	                        android:ems="5"/>
-	
-	                </LinearLayout>
-	
-	                <LinearLayout
-	                    android:layout_width="wrap_content"
-	                    android:layout_height="match_parent"
-	                    android:layout_weight="1" >
-	
-	                    <TextView
-	                        android:id="@+id/columnasPersonalizados"
-	                        android:layout_width="wrap_content"
-	                        android:layout_height="wrap_content"
-	                        android:layout_weight="1"
-	                        android:text="@string/columnas_" />
-	
-	                    <EditText
-	                        android:id="@+id/txtColumnasPersonalizados"
-	                        android:layout_width="wrap_content"
-	                        android:layout_height="wrap_content"
-	                        android:inputType="number"
-	                        android:layout_weight="1" 
-	                        android:ems="5"/>
-	
-	                </LinearLayout>
-	                			                
-	            </LinearLayout>
-	
-	            <LinearLayout
-	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
-	                android:orientation="vertical" >
-	
-	                <LinearLayout
-	                    android:layout_width="match_parent"
-	                    android:layout_height="wrap_content" >
-	
-	                    <TextView
-	                        android:id="@+id/numeroMinas"
-	                        android:layout_width="wrap_content"
-	                        android:layout_height="wrap_content"
-	                        android:text="@string/numero_de_minas_" />
-	
-	                    <EditText
-	                        android:id="@+id/txtNumeroMinas"
-	                        android:layout_width="wrap_content"
-	                        android:layout_height="wrap_content"
-	                        android:inputType="number"
-	                        android:layout_weight="1"
-	                        android:ems="10" />
-	
-	                </LinearLayout>
-	
-	            </LinearLayout>
-	             <LinearLayout
-	                android:layout_width="match_parent"
-	                android:layout_height="wrap_content"
-	                android:orientation="vertical" >
-	        
-            		<Button
-			            android:id="@+id/btnNext"
-			            android:layout_width="fill_parent"
-			            android:layout_height="40dp"
-			            android:text="@string/next" />
-            	</LinearLayout>
-	            
-	        </LinearLayout>	        
-            
+            <LinearLayout 
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="fill_parent"
+			    android:layout_weight="1"
+			    android:gravity="center"
+			    android:paddingLeft="20px"
+		   	>
+
+                <Button
+                    android:id="@+id/Personalizado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/animacion_personalizado" />
+
+                <TextView  
+				  	android:layout_width="fill_parent" 
+				  	android:layout_height="wrap_content" 
+				  	android:gravity="center"
+				  	android:textStyle="bold"
+				  	android:textColor="#000000"
+				  	android:textSize="35sp"
+				  	android:text="@string/personalizado"
+			  	/>
+            </LinearLayout>
         </TableRow>
         
     </TableLayout>
-       
+      
     <TextView  	
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content" 
-    	android:gravity="center"
-    />
-    <TextView  
-		android:id="@+id/txtEspol"		
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center"
-    	android:textColor="#000000"    	
-    	android:textStyle="bold"
-    	android:text="ESPOL"
-    	android:textSize="25sp"
-    />
-    <TextView  	
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center"
-    />
+    	android:gravity="center" />
     
+    <TextView  	
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content" 
+    	android:gravity="center"  />
 </LinearLayout>

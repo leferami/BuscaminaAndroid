@@ -8,26 +8,54 @@ import android.view.View.OnClickListener;
 import android.widget.*;
 
 public class JugarActivity extends Activity {
-	
-	private RadioGroup radioGroupNivel;
-	private int seleccionaIdNivel;
-	private RadioButton radioButtonNivel;
-	private String nivel;
-	
-	TextView lblFilasP;
-	TextView lblColumnasP;
-	TextView lblNumeroMinasP;
-	
-	EditText filasP;
-	EditText columnasP;
-	EditText numeroMinasP;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_jugar);
 		
-		lblFilasP = (TextView) findViewById(R.id.filasPersonalizados);
+		Button btnFacil = (Button)findViewById(R.id.Facil);
+		Button btnIntermedio = (Button)findViewById(R.id.Intermedio);
+		Button btnDificil = (Button)findViewById(R.id.Dificil);
+		Button btnPersonalizado = (Button)findViewById(R.id.Personalizado);
+		
+		btnFacil.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(JugarActivity.this,GameBuscamina.class);
+				intent.putExtra("nivel", "Facil");
+				startActivity(intent);
+			}
+		});
+		btnIntermedio.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(JugarActivity.this,GameBuscamina.class);
+				intent.putExtra("nivel", "Intermedio");
+				startActivity(intent);
+			}
+		});
+		btnDificil.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(JugarActivity.this,GameBuscamina.class);
+				intent.putExtra("nivel", "Dificil");
+				startActivity(intent);
+			}
+		});
+		btnPersonalizado.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(JugarActivity.this,PersonalizadoActivity.class);
+				intent.putExtra("nivel", "Personalizado");
+				startActivity(intent);
+			}
+		});
+		/*lblFilasP = (TextView) findViewById(R.id.filasPersonalizados);
 		lblColumnasP = (TextView) findViewById(R.id.columnasPersonalizados);
 		lblNumeroMinasP = (TextView) findViewById(R.id.numeroMinas);
 		
@@ -43,68 +71,9 @@ public class JugarActivity extends Activity {
 		columnasP.setVisibility(View.GONE);
 		numeroMinasP.setText("");
 		lblNumeroMinasP.setVisibility(View.GONE);
-		numeroMinasP.setVisibility(View.GONE);
+		numeroMinasP.setVisibility(View.GONE);*/
 		
-		RadioButton rdbFacil = (RadioButton)findViewById(R.id.rbtFacil);
-		rdbFacil.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				filasP.setText("");
-				lblFilasP.setVisibility(View.GONE);
-				filasP.setVisibility(View.GONE);
-				columnasP.setText("");
-				lblColumnasP.setVisibility(View.GONE);
-				columnasP.setVisibility(View.GONE);
-				numeroMinasP.setText("");
-				lblNumeroMinasP.setVisibility(View.GONE);
-				numeroMinasP.setVisibility(View.GONE);
-			}
-		});
-		
-		RadioButton rdbIntermedio = (RadioButton)findViewById(R.id.rbtIntermedio);
-		rdbIntermedio.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				filasP.setText("");
-				lblFilasP.setVisibility(View.GONE);
-				filasP.setVisibility(View.GONE);
-				columnasP.setText("");
-				lblColumnasP.setVisibility(View.GONE);
-				columnasP.setVisibility(View.GONE);
-				numeroMinasP.setText("");
-				lblNumeroMinasP.setVisibility(View.GONE);
-				numeroMinasP.setVisibility(View.GONE);
-			}
-		});
-		RadioButton rdbDificil = (RadioButton)findViewById(R.id.rbtDificil);
-		rdbDificil.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				filasP.setText("");
-				lblFilasP.setVisibility(View.GONE);
-				filasP.setVisibility(View.GONE);
-				columnasP.setText("");
-				lblColumnasP.setVisibility(View.GONE);
-				columnasP.setVisibility(View.GONE);
-				numeroMinasP.setText("");
-				lblNumeroMinasP.setVisibility(View.GONE);
-				numeroMinasP.setVisibility(View.GONE);
-			}
-		});
-		RadioButton rdbPersonalizado = (RadioButton)findViewById(R.id.rbtPersonalizado);
-		rdbPersonalizado.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				filasP.setVisibility(View.VISIBLE);
-				lblFilasP.setVisibility(View.VISIBLE);
-				columnasP.setVisibility(View.VISIBLE);
-				lblColumnasP.setVisibility(View.VISIBLE);
-				numeroMinasP.setVisibility(View.VISIBLE);
-				lblNumeroMinasP.setVisibility(View.VISIBLE);
-			}
-		});
-		
-		Button siguiente = (Button)findViewById(R.id.btnNext);		
+		/*Button siguiente = (Button)findViewById(R.id.btnNext);		
 		siguiente.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -122,45 +91,53 @@ public class JugarActivity extends Activity {
 				String columnasNS =columnas.getText().toString();
 				String minasNS =minas.getText().toString();
 				
+				radioGroupNivel = (RadioGroup) findViewById(R.id.radioGroup1);
+				seleccionaIdNivel = radioGroupNivel.getCheckedRadioButtonId();
+				radioButtonNivel = (RadioButton) findViewById(seleccionaIdNivel);
+				
+				nivel = radioButtonNivel.getText().toString();
+								
 				if(nombre.matches("")){
 					Toast.makeText(JugarActivity.this,"No Ingreso Nombre",Toast.LENGTH_LONG).show();
-				}else  if(!filasNS.matches("") && !columnasNS.matches("") && !minasNS.matches("")){
-					filasNumero= Integer.parseInt(filasNS);
-					columnasNumero = Integer.parseInt(columnasNS);
-					minasNumero = Integer.parseInt(minasNS);
+				}else if(nivel.matches("Personalizado")){
 					
-					if (!(filasNumero >= 3 && filasNumero <= 12)){
+					if(filasNS.matches("")){
+					Toast.makeText(JugarActivity.this,"Campo de Filas Vacio",Toast.LENGTH_LONG).show();
+					}else if(columnasNS.matches("")){
+					Toast.makeText(JugarActivity.this,"Campo de Columnas Vacio",Toast.LENGTH_LONG).show();
+					}else if(minasNS.matches("")){
+					Toast.makeText(JugarActivity.this,"Campo de Minas Vacio",Toast.LENGTH_LONG).show();
+					}else{ 
+						filasNumero= Integer.parseInt(filasNS);
+						columnasNumero = Integer.parseInt(columnasNS);
+						minasNumero = Integer.parseInt(minasNS);
+						if (!(filasNumero >= 3 && filasNumero <= 12)){
 						Toast.makeText(JugarActivity.this,"Numero de Filas fuera de Rango",Toast.LENGTH_LONG).show();
 				        filas.setText("");
-					}else  if (!(columnasNumero >= 3 && columnasNumero <= 12)){
-						Toast.makeText(JugarActivity.this,"Numero de Columnas fuera de Rango",Toast.LENGTH_LONG).show();
-				        columnas.setText("");
-					}else  if (minasNumero >=(filasNumero*columnasNumero)){
-						Toast.makeText(JugarActivity.this,"Numero de Minas excede al numero de celdas",Toast.LENGTH_LONG).show();
-				        minas.setText("");
-					}else{
-						radioGroupNivel = (RadioGroup) findViewById(R.id.radioGroup1);
-						seleccionaIdNivel = radioGroupNivel.getCheckedRadioButtonId();
-						radioButtonNivel = (RadioButton) findViewById(seleccionaIdNivel);
-						
-						nivel = radioButtonNivel.getText().toString();
-						Intent intent = new Intent(JugarActivity.this,GameBuscamina.class);
-						intent.putExtra("nivel", nivel);
-						intent.putExtra("filas", filasNumero);
-						intent.putExtra("columnas", columnasNumero);
-						intent.putExtra("minas", minasNumero);
-						startActivity(intent);
+						}else  if (!(columnasNumero >= 3 && columnasNumero <= 12)){
+							Toast.makeText(JugarActivity.this,"Numero de Columnas fuera de Rango",Toast.LENGTH_LONG).show();
+					        columnas.setText("");
+						}else  if (minasNumero >=(filasNumero*columnasNumero)){
+							Toast.makeText(JugarActivity.this,"Numero de Minas excede al numero de celdas",Toast.LENGTH_LONG).show();
+					        minas.setText("");
+						}else{
+							Intent intent = new Intent(JugarActivity.this,GameBuscamina.class);
+							intent.putExtra("nivel", nivel);
+							intent.putExtra("filas", filasNumero);
+							intent.putExtra("columnas", columnasNumero);
+							intent.putExtra("minas", minasNumero);
+							startActivity(intent);
+						}
 					}
 				}else{
-					Toast.makeText(JugarActivity.this,"Existesn Campos Vacios",Toast.LENGTH_LONG).show();
+					Intent intent = new Intent(JugarActivity.this,GameBuscamina.class);
+					intent.putExtra("nivel", nivel);
+					intent.putExtra("filas", filasNumero);
+					intent.putExtra("columnas", columnasNumero);
+					intent.putExtra("minas", minasNumero);
+					startActivity(intent);
 				}
 			}
-		});//Boton SIGUIENTE
-	}
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.jugar, menu);
-		return true;
+		});Boton SIGUIENTE*/
 	}	
 }

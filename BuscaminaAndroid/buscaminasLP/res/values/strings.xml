@@ -33,5 +33,12 @@
     <string name="jose_velez">Jose Velez</string>
     <string name="kevin_campuzano">Kevin Campuzano</string>
     <string name="leonel_ramirez">Leonel Ramirez</string>
+    <string name="dificultad">Dificultad</string>
+    <string name="f_cil">Fácil</string>
+    <string name="dif_cil">Difícil</string>
+    <string name="title_activity_personalizado">PersonalizadoActivity</string>
+     <string name="no_filas">No.FILAS</string>
+    <string name="no_columnas">No.COLUMNAS</string>
+    <string name="no_minas">No.MINAS</string>
 
 </resources>

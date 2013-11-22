@@ -12,16 +12,14 @@
 	    android:layout_weight="3"
 	    android:gravity="center">
     	<TextView  
-			android:id="@+id/txtBuscamina"
+			android:id="@+id/txtNiveles"
 	    	android:layout_width="fill_parent" 
 	    	android:layout_height="wrap_content" 
 	    	android:gravity="center"
 	    	android:text="@string/buscaminas"
 	    	android:textStyle="bold"
 	    	android:textSize="30sp"
-	    	android:textColor="#000000"
-	    />
-    	
+	    	android:textColor="#000000"/>    	
     </LinearLayout>
 
     <TableLayout 
@@ -41,12 +39,13 @@
 			    android:layout_weight="1"
 			    android:gravity="center"
 			    android:paddingRight="20px"	>
+
                 <Button
-        			android:id="@+id/Jugar"
-        			android:layout_width="100dp"
-			        android:layout_height="70dp"
-			        android:layout_weight="1"
-			        android:background="@drawable/play"/>
+                    android:id="@+id/Facil"
+                    android:layout_width="100dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animacion_play" />
                 
                 <TextView  
 				  	android:layout_width="fill_parent" 
@@ -65,14 +64,14 @@
 			    android:gravity="center"
 			    android:paddingLeft="20px"
 		   	>
+
                 <Button
-			        android:id="@+id/Puntajes"
-			        android:layout_width="100dp"
-			        android:layout_height="70dp"
-			        android:layout_weight="1"
-			        android:background="@drawable/score"
-			        
-		        />
+                    android:id="@+id/Dificil"
+                    android:layout_width="100dp"
+                    android:layout_height="70dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animacion_puntaje" />
+
                  <TextView  
 				  	android:layout_width="fill_parent" 
 				  	android:layout_height="wrap_content" 
@@ -98,13 +97,15 @@
 			    android:layout_weight="1"
 			    android:gravity="center"
 			    android:paddingRight="20px">
+
                 <Button
-                    android:id="@+id/Reglas"
-			    	android:layout_width="100dp" 
-			    	android:layout_height="60dp" 
-			    	android:layout_weight="1" 
-			    	android:padding="20px"
-			    	android:background="@drawable/rules"  	/>
+                    android:id="@+id/Intermedio"
+                    android:layout_width="100dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animacion_reglas"
+                    android:padding="20px" />
+
                 <TextView  
 				  	android:layout_width="fill_parent" 
 				  	android:layout_height="wrap_content" 
@@ -123,13 +124,14 @@
 			    android:gravity="center"
 			    android:paddingLeft="20px"
 		   	>
+
                 <Button
-			        android:id="@+id/Creditos"
-			        android:layout_width="100dp"
-			        android:layout_height="50dp"
-			        android:layout_weight="1"
-			        android:background="@drawable/desarrolladores"  
-			    />
+                    android:id="@+id/Personalizado"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/animacion_desarrolladores" />
+
                 <TextView  
 				  	android:layout_width="fill_parent" 
 				  	android:layout_height="wrap_content" 
