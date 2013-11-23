@@ -1,7 +1,7 @@
 package com.example.buscaminaslp;
 
 import TableroBuscaminas.Casilla;
-
+import java.util.Random;
 import android.os.*;
 import android.app.Activity;
 import android.view.*;
@@ -9,27 +9,30 @@ import android.view.View.OnClickListener;
 import android.widget.*;
 import android.widget.TableRow.LayoutParams;
 
-public class GameBuscamina extends Activity implements OnClickListener{
+public class GameBuscamina extends Activity{
 
         private String nivelBuscaminas;
-        private Integer filasTablero = 10, columnasTablero = 10;
-        private Integer minasTablero = 0;
+        private Integer filasTablero = 0;
+    	private Integer columnasTablero = 0;
+    	private Integer minasTablero = 0;
         private Casilla casillas[][]; 
         private int dimensionCasillas = 50; 
         private int rellenoCasillas = 2;
         
         private Handler timer = new Handler();
-        private boolean comenzarTiempo;
         private int segundos = 0;
+        
+        private boolean comenzarTiempo;
+    	private boolean setearMinas;
+    	private TextView tituloBuscamina;
         private TextView txtCronometro;
         private TextView txtMinas;
         private TableLayout campoMinas;
         
-        private Button botonReiniciar;
-    private Button botonSalir;
-    private int minasEncontradas = 00;
-    
-    private boolean isTimerStarted;
+        private int minasEncontradas = 00;
+    	private Button botonReiniciar;
+        
+        private long segundostiempo = 0;
         
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -39,22 +42,21 @@ public class GameBuscamina extends Activity implements OnClickListener{
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_game_buscamina);
                 
-                txtCronometro = (TextView) findViewById(R.id.Cronometro);
-                txtMinas = (TextView) findViewById(R.id.Minas);
+               
                 nivelBuscaminas = (String) getIntent().getSerializableExtra("nivel");
-                TextView titulo = (TextView) findViewById(R.id.txtNiveles);
-                titulo.setText("BUSCAMINA - " +nivelBuscaminas.toUpperCase());        
+                tituloBuscamina = (TextView) findViewById(R.id.txtNiveles);
+                tituloBuscamina.setText("BUSCAMINA - " +nivelBuscaminas.toUpperCase());        
                 
                 if(nivelBuscaminas.equals("Facil")){
                         filasTablero = 8;
                         columnasTablero = 8;
                         minasTablero = 10;
                 }else if(nivelBuscaminas.equals("Intermedio")){
-                        filasTablero = 8;
+                        filasTablero = 10;
                         columnasTablero = 10;
                         minasTablero = 15;
                 }else if(nivelBuscaminas.equals("Dificil")){
-                        filasTablero = 10;
+                        filasTablero = 12;
                         columnasTablero = 12;
                         minasTablero = 20;
                 }else{
@@ -63,9 +65,11 @@ public class GameBuscamina extends Activity implements OnClickListener{
                         minasTablero = (Integer) getIntent().getSerializableExtra("minas");
                 }
                 
+                txtCronometro = (TextView) findViewById(R.id.Cronometro);
+                txtMinas = (TextView) findViewById(R.id.Minas);
                 txtMinas.setText(minasEncontradas+"/"+minasTablero);
                 
-                
+               
                 botonReiniciar = (Button) findViewById(R.id.restart);
                 botonReiniciar.setOnClickListener(new OnClickListener() {
                         @Override
@@ -73,17 +77,23 @@ public class GameBuscamina extends Activity implements OnClickListener{
                                 salirJuego();
                                 presionado();
                         }
-                });
+                });//Boton Iniciar y Reiniciar el Juego
                 
                 campoMinas = (TableLayout)findViewById(R.id.MineField);
+                presionado();// Dibujar el TABLERO al inicio del JUEGO
                 
         }
         
-        public void presionado(){//Comienza el juego
+        /**
+    	 * Comienza el juego**/
+        public void presionado(){
                 crearCamposMinas();
                 mostrarCamposMinas();
+                segundos = 0;
         }
         
+        /**
+    	 * Mostrar las minas en pantalla**/
         private void mostrarCamposMinas(){
                 int filasT = filasTablero + 1;
                 int columnasT = columnasTablero + 1;
@@ -109,57 +119,153 @@ public class GameBuscamina extends Activity implements OnClickListener{
                         for (int columnas = 0; columnas < columnasT; columnas++){        
                                 casillas[filas][columnas] = new Casilla(this);
                                 casillas[filas][columnas].valoresIniciales();
-                                casillas[filas][columnas].setOnClickListener(this);
+                                
+                                
+                                final int filasActivasMinas = filas;
+                                final int columnasActivasMinas = columnas;
+                				
+                				casillas[filas][columnas].setOnClickListener(new OnClickListener() {
+                					
+                					@Override
+                					public void onClick(View v) {
+                						// Comienza el tiempo del juego
+                						if (!comenzarTiempo){
+                							comenzarTiempo();
+                							comenzarTiempo = true;
+                						}
+                						//Fija las minas aleatoriamente despues que se da un clic en cualquier posicion
+                						if (!setearMinas){
+                							setearMinas = true;
+                							fijarMinas(filasActivasMinas, columnasActivasMinas);
+                						}
+                						
+                						if (!casillas[filasActivasMinas][columnasActivasMinas].marcado())
+                						{
+                							cubierta(filasActivasMinas, columnasActivasMinas);
+                							
+                							if (casillas[filasActivasMinas][columnasActivasMinas].existeMinas()){
+                								juegoFinalizado(filasActivasMinas,columnasActivasMinas);
+                							}
+                							//if (checkGameWin())
+                							//	winGame();
+                						}
+                						
+                					}
+                				});
                         }
                 }
         }
+       
+    	/**
+    	 * @param filasActivas
+    	 * @param columnasActivas
+    	 * Poner aleatoriamente las minas en el tablero**/
+    	private void fijarMinas(int filasActivas, int columnasActivas){
+    		
+    		Random rand = new Random();
+    		int filaMina, columnaMina;
 
-        @Override
-        public void onClick(View v) {
-                int filasT = filasTablero + 2;
-                int columnasT = columnasTablero + 2;
-                for (int filas = 0; filas < filasT; filas++){
-                        for (int columnas = 0; columnas < columnasT; columnas++){
-                                if(v.equals(casillas[filas][columnas])){
-                                        if (!comenzarTiempo){
-                                                comenarTiempo();
-                                                comenzarTiempo = true;
-                                        }
-                                }
-                        }
-                }
-        }
+    		for (int fila = 0; fila < minasTablero; fila++){
+    			filaMina = rand.nextInt(filasTablero);
+    			columnaMina = rand.nextInt(columnasTablero);
+    			
+    			if ((filaMina + 1 != filasActivas) || (columnaMina + 1 != columnasActivas)){
+    				if (casillas[filaMina + 1][columnaMina + 1].existeMinas())
+    					fila--;
+    				casillas[filaMina + 1][columnaMina + 1].ponerMinas();
+    			}else{
+    				fila--;
+    			}
+    		}
+
+    		int contadorMinasCercanas;
+
+    		for (int fila = 0; fila < filasTablero + 2; fila++){
+    			for (int columna = 0; columna < columnasTablero + 2; columna++){
+    				contadorMinasCercanas = 0;
+    				if ((fila != 0) && (fila != (filasTablero + 1)) && (columna != 0) && (columna != (columnasTablero + 1))){
+    					for (int filasPrevias = -1; filasPrevias < 2; filasPrevias++){
+    						for (int columnasPrevia = -1; columnasPrevia < 2; columnasPrevia++){
+    							if (casillas[fila + filasPrevias][columna + columnasPrevia].existeMinas())
+    								contadorMinasCercanas++;
+    						}
+    					}
+    					casillas[fila][columna].fijarNumeroMinasAlrededor(contadorMinasCercanas);
+    				}else{
+    					casillas[fila][columna].fijarNumeroMinasAlrededor(9);
+    					casillas[fila][columna].abrirCasilla();
+    				}
+    			}
+    		}
+    	}
+    	
+        private void cubierta(int filaPresionada, int columnaPresionada){
+    		if (casillas[filaPresionada][columnaPresionada].existeMinas() || casillas[filaPresionada][columnaPresionada].marcado())
+    			return;
+    		
+    		casillas[filaPresionada][columnaPresionada].abrirCasilla();
+    		if (casillas[filaPresionada][columnaPresionada].obtenerMinasAlrededor() != 0 )
+    			return;
+
+    		for (int fila = 0; fila < 3; fila++){
+    			for (int columna = 0; columna < 3; columna++){
+    				if (casillas[filaPresionada + fila - 1][columnaPresionada + columna - 1].cubierto()	&& (filaPresionada + fila - 1 > 0) && (columnaPresionada + columna - 1 > 0)	&& (filaPresionada + fila - 1 < filasTablero + 1) && (columnaPresionada + columna - 1 < columnasTablero + 1))
+    					cubierta(filaPresionada + fila - 1, columnaPresionada + columna - 1 );
+    			}
+    		}
+    		return;
+    	}
+    	
+    	private void juegoFinalizado(int currentRow, int currentColumn){
+    		detenerTiempo(); 
+    		comenzarTiempo = false;
+
+    		for (int fila = 1; fila < filasTablero + 1; fila++){
+    			for (int columna = 1; columna < columnasTablero + 1; columna++){
+    				casillas[fila][columna].fijarCasillaDeshabilitada(false);
+    				
+    				if (casillas[fila][columna].existeMinas() && !casillas[fila][columna].cubierto())
+    					casillas[fila][columna].fijarIconoMinas(false);
+
+    				if (casillas[fila][columna].cubierto())
+    					casillas[fila][columna].fijarPresionado(false);
+    			}
+    		}
+    		casillas[currentRow][currentColumn].activarMinas();
+    	}
         
         private void salirJuego(){
-                detenenerTiempo(); 
+                detenerTiempo(); 
                 txtCronometro.setText("000"); 
+                txtMinas.setText("00/"+minasTablero);
                 campoMinas.removeAllViews();
+                
+                comenzarTiempo = false;
+        		setearMinas = false;
+        		minasEncontradas = 00;
         }
         
-        public void comenarTiempo(){
+    	/**Comienza el tiempo a transcurrir**/      
+        public void comenzarTiempo(){
                 if (segundos == 0){
                         timer.removeCallbacks(updateTimeElasped);
                         timer.postDelayed(updateTimeElasped, 1000);
                 }
         }
         
-        public void detenenerTiempo(){
+        /**Detiene el tiempo**/
+        public void detenerTiempo(){
                 timer.removeCallbacks(updateTimeElasped);
         }
         
+        /**Controla el hilo del tiempo*/
         private Runnable updateTimeElasped = new Runnable(){
                 public void run(){
-                        long currentMilisegundos = System.currentTimeMillis();
+                        segundostiempo = System.currentTimeMillis();
                         ++segundos;
-
-                        if (segundos < 10){
-                                txtCronometro.setText("00" + Integer.toString(segundos));
-                        }else if (segundos < 100){
-                                txtCronometro.setText("0" + Integer.toString(segundos));
-                        }else{
-                                txtCronometro.setText(Integer.toString(segundos));
-                        }
-                        timer.postAtTime(this, currentMilisegundos);
+                        txtCronometro.setText(Integer.toString(segundos));
+                        
+                        timer.postAtTime(this, segundostiempo);
                         timer.postDelayed(updateTimeElasped, 1000);
                 }
         };
