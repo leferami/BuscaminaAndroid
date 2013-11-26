@@ -11,6 +11,7 @@ public class Casilla extends Button{
 	private boolean marcado;
 	private boolean presionado; 
 	private int numeroMinasAlrededor; 
+	private boolean preguntaMarcada;
 	
 	public Casilla (Context context){
 		super(context);
@@ -21,9 +22,11 @@ public class Casilla extends Button{
 		estadoMina = false;
 		marcado = false;
 		presionado = true;
+		preguntaMarcada = false;
 		numeroMinasAlrededor = 0;
 
 		this.setBackgroundResource(R.drawable.casilla_azul);
+		
 	}
 	
 	/** Marca Bloque con una mina debajo*/
@@ -66,14 +69,11 @@ public class Casilla extends Button{
 			this.setBackgroundResource(R.drawable.casilla_azul);
 	}
 	
-	
-	
 	/**
 	 * @param habilitar Estado del icono de la mina
 	 * Fijar si se encuentra una mina**/
 	public void fijarIconoMinas(boolean habilitar){
-
-		this.setBackgroundResource(R.drawable.casilla_bomba);
+			this.setBackgroundResource(R.drawable.casilla_bomba);
 	}
 	
 	public void cambiarNumeroMinasAlrededor(int number){
@@ -85,7 +85,6 @@ public class Casilla extends Button{
 	public void actualizarNumero(int text){
 		if (text != 0){
 			this.setText(Integer.toString(text));
-			
 			if(text == 1 || text == 2 || text ==3)
 				this.setTextColor(Color.BLUE);
 			else if(text == 4 || text == 4 || text ==6)
@@ -119,6 +118,11 @@ public class Casilla extends Button{
 		numeroMinasAlrededor = numero;
 	}
 	
+	public void fijarNumAlre(int number)//
+	{
+		this.setBackgroundResource(R.drawable.casilla_plomo);
+	}
+	
 	/**
 	 * @return numeroMinasAlrededor*/
 	public int obtenerMinasAlrededor(){
@@ -130,7 +134,17 @@ public class Casilla extends Button{
 	public void activarMinas(){
 		fijarIconoMinas(true);
 	}
+	
+	/**
+	 * fijar mina como marcada*/
+	public void marcarIcono(boolean enabled){
+		this.setBackgroundResource(R.drawable.casilla_bandera);
 
+		if (!enabled){
+			this.setBackgroundResource(R.drawable.casilla_plomo);
+		}
+	}
+	
 	public boolean presionado(){
 		return presionado;
 	}
@@ -140,6 +154,25 @@ public class Casilla extends Button{
 		presionado = clickable;
 	}
 	
+	public boolean preMaracada(){
+		return preguntaMarcada;
+	}
 	
+	public void fijarPreMarcada (boolean preMarcada){
+		preguntaMarcada = preMarcada;
+	}
+	
+	public void fijarCasillasMarcada(boolean enabled)
+	{
+		if (!enabled)
+		{
+			this.setBackgroundResource(R.drawable.casilla_i);
+		}
+	}
+	
+	public void limpiaTodo()
+	{
+		this.setText("");
+	}
 }
 
