@@ -4,23 +4,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#FFFFFF" >
-    
-    <LinearLayout 
-	    android:orientation="vertical"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_weight="3"
-	    android:gravity="center">
-    	<TextView  
-			android:id="@+id/txtNiveles"
-	    	android:layout_width="fill_parent" 
-	    	android:layout_height="wrap_content" 
-	    	android:gravity="center"
-	    	android:text="@string/buscaminas"
-	    	android:textStyle="bold"
-	    	android:textSize="30sp"
-	    	android:textColor="#000000"/>    	
-    </LinearLayout>
 
     <TableLayout 
 	    android:layout_width="fill_parent"
@@ -144,26 +127,6 @@
         </TableRow>
         
     </TableLayout>
-      
-    <TextView  	
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center" />
-    
-    <TextView  
-		android:id="@+id/txtEspol"		
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center"
-    	android:textColor="#000000"    	
-    	android:textStyle="bold"
-    	android:text="@string/espol"
-    	android:textSize="25sp"/>
-    
-    <TextView  	
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center"  />
     
     
 </LinearLayout>

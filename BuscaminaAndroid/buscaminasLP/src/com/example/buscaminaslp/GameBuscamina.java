@@ -4,6 +4,7 @@ import java.util.Random;
 import TableroBuscaminas.Casilla;
 import android.os.*;
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.view.*;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
@@ -18,7 +19,7 @@ public class GameBuscamina extends Activity {
 	private Integer minasTablero = 0;
 	
 	private Casilla casillas[][]; 
-	private int dimensionCasillas = 50; 
+	private int dimensionCasillas; 
 	private int rellenoCasillas = 2;
 	
 	private Handler tiempo = new Handler();
@@ -54,18 +55,32 @@ public class GameBuscamina extends Activity {
 			filasTablero = 8;
 			columnasTablero = 8;
 			minasTablero = 10;
+			dimensionCasillas = 60; 
 		}else if(nivelBuscaminas.equals("Intermedio")){
 			filasTablero = 10;
 			columnasTablero = 10;
 			minasTablero = 15;
+			dimensionCasillas = 50; 
 		}else if(nivelBuscaminas.equals("Dificil")){
 			filasTablero = 12;
 			columnasTablero = 12;
 			minasTablero = 20;
+			dimensionCasillas = 40; 
 		}else{
+			
 			filasTablero = (Integer) getIntent().getSerializableExtra("filas");
 			columnasTablero  = (Integer) getIntent().getSerializableExtra("columnas");
 			minasTablero = (Integer) getIntent().getSerializableExtra("minas");
+			
+			if(filasTablero <= 5 || columnasTablero <= 5){
+				dimensionCasillas = 70; 
+			}else if(filasTablero <= 8 || columnasTablero <= 8){
+				dimensionCasillas = 60; 
+			}else if(filasTablero <= 10|| columnasTablero <= 10){
+				dimensionCasillas = 50; 
+			}else {
+				dimensionCasillas = 40; 
+			}
 		}
 		
 		txtCronometro = (TextView) findViewById(R.id.Cronometro);		
@@ -83,7 +98,12 @@ public class GameBuscamina extends Activity {
 		
 		campoMinas = (TableLayout)findViewById(R.id.MineField);
 		presionado();
-		}
+	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+	    super.onConfigurationChanged(newConfig);
+	}
 	
 	/**
 	 * Comienza el juego**/

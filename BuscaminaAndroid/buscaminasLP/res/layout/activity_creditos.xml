@@ -4,23 +4,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#FFFFFF" >
- 	
-    <LinearLayout 
-	    android:orientation="vertical"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_weight="3"
-	    android:gravity="center">
-	    <TextView
-	        android:id="@+id/txtDesarrolladores"
-	        android:layout_width="fill_parent"
-	        android:layout_height="wrap_content"
-	        android:gravity="center"
-	        android:text="@string/desarrolladores"
-	        android:textStyle="bold"
-	    	android:textSize="40sp"
-	    	android:textColor="#000000" />
-    </LinearLayout>
     
  	<LinearLayout 
 	    android:orientation="horizontal"
@@ -85,7 +68,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:gravity="center"
-	        android:text="kevcamp@espol.edu.ec"
+	        android:text="kegucamp@espol.edu.ec"
 	        android:textStyle="bold"
 	    	android:textSize="20sp"
 	    	android:textColor="#000000"/>

@@ -4,23 +4,6 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_weight="3"
-        android:gravity="center" >
-        <TextView
-            android:id="@+id/txtPersonalizado"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/personalizado"
-            android:textColor="#000000"
-            android:textStyle="bold"
-	    	android:textSize="50sp" />
-    </LinearLayout>
-
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" 
@@ -38,11 +21,10 @@
 			    android:layout_width="fill_parent"
 			    android:layout_height="fill_parent"
 			    android:layout_weight="1"
-			    android:gravity="center"
-			    android:paddingRight="20px">
+			    android:gravity="center">
                 <TextView
                     android:id="@+id/txtFilas"
-                    android:layout_width="300dp"
+                    android:layout_width="450dp"
                     android:layout_height="60dp"
                     android:gravity="center"
                     android:textSize="30sp"
@@ -56,12 +38,13 @@
 			    android:layout_height="fill_parent"
 			    android:layout_weight="1"
 			    android:gravity="center"
-			    android:paddingLeft="20px">
+			    android:paddingLeft="20px"
+			    android:paddingRight="30px">
 	            <NumberPicker
 	                android:gravity="center"
 	                android:id="@+id/npFilas"
 	                android:layout_width="fill_parent"
-	                android:layout_height="70dp"
+	                android:layout_height="fill_parent"
 	                android:layout_weight="1" />
 	   		</LinearLayout>
         </TableRow>
@@ -79,8 +62,7 @@
 			    android:layout_width="fill_parent"
 			    android:layout_height="fill_parent"
 			    android:layout_weight="1"
-			    android:gravity="center"
-			    android:paddingRight="20px" >
+			    android:gravity="center">
                 <TextView
                     android:id="@+id/txtColumnas"
                     android:layout_width="450dp"
@@ -97,13 +79,14 @@
 			    android:layout_height="fill_parent"
 			    android:layout_weight="1"
 			    android:gravity="center"
-			    android:paddingLeft="20px">
+			    android:paddingLeft="20px"
+			    android:paddingRight="30px">
 	            <NumberPicker
 	                android:id="@+id/npColumnas"
-	                android:gravity="center"
 	                android:layout_width="fill_parent"
-	                android:layout_height="70dp"
-	                android:layout_weight="1"/>
+	                android:layout_height="fill_parent"
+	                android:layout_weight="1"
+	                android:gravity="center"/>
 	   		</LinearLayout>
 
         </TableRow>
@@ -121,8 +104,7 @@
 			    android:layout_width="fill_parent"
 			    android:layout_height="fill_parent"
 			    android:layout_weight="1"
-			    android:gravity="center"
-			    android:paddingRight="20px" >
+			    android:gravity="center" >
                 <TextView
                     android:id="@+id/txtMinas"
                     android:layout_width="450dp"
@@ -139,52 +121,33 @@
 			    android:layout_height="fill_parent"
 			    android:layout_weight="1"
 			    android:gravity="center"
-			    android:paddingLeft="20px">
+			    android:paddingLeft="20px"
+			    android:paddingRight="30px">
 	            <NumberPicker
 	                android:id="@+id/npMinas"
 	                android:gravity="center"
 	                android:layout_width="fill_parent"
-		            android:layout_height="50dp"
-		            android:layout_alignParentTop="true"
-        			android:layout_centerHorizontal="true"
+		            android:layout_height="fill_parent"
 		            android:layout_weight="1"/>
 	     	 </LinearLayout>
 	     	 
         </TableRow>
 	</TableLayout>
-
+    
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal" 
-        android:gravity="center">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="570sp"
+        android:orientation="vertical" 
+        android:gravity="center"
+        android:paddingBottom="15dp">
 
         <Button
             android:id="@+id/btnSiguiente"
-            android:layout_width="10dp"
-            android:layout_height="90dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="250dp"
-            android:layout_marginRight="250dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.2"
-            android:gravity="center"
-            android:background="@drawable/siguiente" />
-    </LinearLayout>
-	
-	<TextView  
-		android:id="@+id/txtEspol"		
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center"
-    	android:textColor="#000000"    	
-    	android:textStyle="bold"
-    	android:text="@string/espol"
-    	android:textSize="25sp"/>
-    
-    <TextView  	
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center"  />   
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:background="@drawable/animacion_siguiente"
+            android:gravity="center"/>
+    </LinearLayout>   
     
 </LinearLayout>

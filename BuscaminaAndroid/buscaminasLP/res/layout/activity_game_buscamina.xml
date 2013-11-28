@@ -82,55 +82,58 @@
         android:gravity="center">
 
         <TableRow
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_width="fill_parent"
+        	android:layout_height="fill_parent">
+            
                         
             <TableLayout 
 	    		android:id="@+id/MineField"
-	    		android:layout_width="660px"
-			    android:layout_height="660px"
+	    		android:layout_width="fill_parent"
+        		android:layout_height="fill_parent"
 			    android:gravity="bottom"
 			    android:stretchColumns="*"
 			    android:layout_span="1"
-			    android:padding="5dip"  >
+			    android:padding="2dip"  >
 			</TableLayout>
         </TableRow>
 
     </TableLayout>
 
      <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal" 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="15dp">
+        <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1" 
+        android:paddingLeft="200dp"
         android:gravity="center">
-
-        <Button
-            android:id="@+id/restart"
-            android:layout_width="10dp"
-            android:layout_height="90dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="250dp"
-            android:layout_marginRight="250dp"
-            android:layout_marginTop="10dp"
-            android:layout_weight="0.2"
-            android:background="@drawable/animacion_reiniciar"
-            android:gravity="center" />
-
-    </LinearLayout>
-	
-	<TextView  
-		android:id="@+id/txtEspol"		
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center"
-    	android:textColor="#000000"    	
-    	android:textStyle="bold"
-    	android:text="@string/espol"
-    	android:textSize="25sp"/>
-    
-    <TextView  	
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center"  /> 
+	        <Button
+	            android:id="@+id/restart"
+	            android:layout_width="70dp"
+	            android:layout_height="70dp"
+	            android:background="@drawable/animacion_reiniciar"
+	            />
+        </LinearLayout> 
+        
+        <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="1" 
+        android:gravity="center"
+	    android:paddingRight="200dp"> 
+            <Button
+	            android:id="@+id/salir"
+	            android:layout_width="70dp"
+	            android:layout_height="70dp"
+	            android:background="@drawable/animacion_salir"/>
+	    </LinearLayout>
+    </LinearLayout> 
   
 </LinearLayout>
 

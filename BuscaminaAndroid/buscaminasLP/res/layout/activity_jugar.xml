@@ -4,25 +4,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#FFFFFF" >
-    
-    <LinearLayout 
-	    android:orientation="vertical"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:layout_weight="7"
-	    android:gravity="center">
-
-    	<TextView
-    	    android:id="@+id/txtNiveles"
-    	    android:layout_width="fill_parent"
-    	    android:layout_height="wrap_content"
-    	    android:gravity="center"
-    	    android:text="@string/dificultad"
-    	    android:textColor="#000000"
-    	    android:textSize="60sp"
-    	    android:textStyle="bold" />
-    	
-    </LinearLayout>
 
     <TableLayout 
 	    android:layout_width="fill_parent"
@@ -150,14 +131,4 @@
         </TableRow>
         
     </TableLayout>
-      
-    <TextView  	
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center" />
-    
-    <TextView  	
-    	android:layout_width="fill_parent" 
-    	android:layout_height="wrap_content" 
-    	android:gravity="center"  />
 </LinearLayout>
