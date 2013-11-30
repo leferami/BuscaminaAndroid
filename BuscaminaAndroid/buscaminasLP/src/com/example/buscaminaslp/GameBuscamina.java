@@ -110,6 +110,7 @@ public class GameBuscamina extends Activity {
 	public void presionado(){
 		crearCamposMinas();
 		mostrarCamposMinas();
+		perdistes=false;
 		minasExistente = minasTablero;
 		segundos = 0;
 	}
@@ -161,7 +162,7 @@ public class GameBuscamina extends Activity {
 							fijarMinas(filasActivasMinas, columnasActivasMinas);
 						}
 						
-						if (!casillas[filasActivasMinas][columnasActivasMinas].marcado())
+						if (!casillas[filasActivasMinas][columnasActivasMinas].bandera())
 						{
 							cubierta(filasActivasMinas, columnasActivasMinas);
 							
@@ -176,7 +177,7 @@ public class GameBuscamina extends Activity {
 				casillas[filas][columnas].setOnLongClickListener(new  OnLongClickListener() {
 					
 					public boolean onLongClick(View v) {
-						// TODO Auto-generated method stub
+						
 						if (!casillas[filasActivasMinas][columnasActivasMinas].cubierto() && (casillas[filasActivasMinas][columnasActivasMinas].obtenerMinasAlrededor() > 0) && !perdistes)
 						{
 							int casillasMinasCercas = 0;
@@ -184,7 +185,7 @@ public class GameBuscamina extends Activity {
 							{
 								for (int columnasPrevia = -1; columnasPrevia < 2; columnasPrevia++)
 								{
-									if (casillas[filasActivasMinas + filasPrevia][columnasActivasMinas + columnasPrevia].marcado())
+									if (casillas[filasActivasMinas + filasPrevia][columnasActivasMinas + columnasPrevia].bandera())
 									{
 										casillasMinasCercas++;
 									}
@@ -197,7 +198,7 @@ public class GameBuscamina extends Activity {
 								{
 									for (int ColumnasPrevias = -1; ColumnasPrevias < 2; ColumnasPrevias++)
 									{
-										if (!casillas[filasActivasMinas + filasPrevias][columnasActivasMinas + ColumnasPrevias].marcado())
+										if (!casillas[filasActivasMinas + filasPrevias][columnasActivasMinas + ColumnasPrevias].bandera())
 										{
 											cubierta(filasActivasMinas + filasPrevias, columnasActivasMinas + ColumnasPrevias);
 			
@@ -213,34 +214,27 @@ public class GameBuscamina extends Activity {
 						}
 
 						if (casillas[filasActivasMinas][columnasActivasMinas].isClickable() && 
-								(casillas[filasActivasMinas][columnasActivasMinas].isEnabled() || casillas[filasActivasMinas][columnasActivasMinas].marcado()))
+								(casillas[filasActivasMinas][columnasActivasMinas].isEnabled() || casillas[filasActivasMinas][columnasActivasMinas].bandera()))
 						{
-							if (!casillas[filasActivasMinas][columnasActivasMinas].marcado() && !casillas[filasActivasMinas][columnasActivasMinas].preMaracada())
+							if (!casillas[filasActivasMinas][columnasActivasMinas].bandera() )
 							{
 								casillas[filasActivasMinas][columnasActivasMinas].fijarCasillaDeshabilitada(false);
-								casillas[filasActivasMinas][columnasActivasMinas].marcarIcono(true);
-								casillas[filasActivasMinas][columnasActivasMinas].fijarMarcado(true);
+								casillas[filasActivasMinas][columnasActivasMinas].marcarBandera(true);
+								casillas[filasActivasMinas][columnasActivasMinas].fijarBandera(true);
 								minasEncontradas--; 
 							}
-							else if (!casillas[filasActivasMinas][columnasActivasMinas].preMaracada())
-							{
-								casillas[filasActivasMinas][columnasActivasMinas].fijarCasillaDeshabilitada(true);
-								casillas[filasActivasMinas][columnasActivasMinas].fijarCasillasMarcada(true);
-								casillas[filasActivasMinas][columnasActivasMinas].fijarMarcado(false);
-								casillas[filasActivasMinas][columnasActivasMinas].fijarPreMarcada(true);
-								minasEncontradas++; 
-							}
+							
 							else
 							{
 								casillas[filasActivasMinas][columnasActivasMinas].fijarCasillaDeshabilitada(true);
 								casillas[filasActivasMinas][columnasActivasMinas].limpiaTodo();
-								casillas[filasActivasMinas][columnasActivasMinas].fijarPreMarcada(false);
 								
-								if (casillas[filasActivasMinas][columnasActivasMinas].marcado())
+								
+								if (casillas[filasActivasMinas][columnasActivasMinas].bandera())
 								{
 									minasEncontradas++; 
 								}
-								casillas[filasActivasMinas][columnasActivasMinas].fijarMarcado(false);
+								casillas[filasActivasMinas][columnasActivasMinas].fijarBandera(false);
 							}
 						}
 
@@ -278,10 +272,14 @@ public class GameBuscamina extends Activity {
 				if (casillas[filaMina + 1][columnaMina + 1].existeMinas())
 					fila--;
 				casillas[filaMina + 1][columnaMina + 1].ponerMinas();
-			}else{
+			}
+			
+			else{
 				fila--;
 			}
 		}
+		
+		
 
 		int contadorMinasCercanas;
 
@@ -305,7 +303,7 @@ public class GameBuscamina extends Activity {
 	}
 	
 	private void cubierta(int filaPresionada, int columnaPresionada){
-		if (casillas[filaPresionada][columnaPresionada].existeMinas() || casillas[filaPresionada][columnaPresionada].marcado())
+		if (casillas[filaPresionada][columnaPresionada].existeMinas() || casillas[filaPresionada][columnaPresionada].bandera())
 			return;
 		
 		casillas[filaPresionada][columnaPresionada].abrirCasilla();
@@ -314,7 +312,10 @@ public class GameBuscamina extends Activity {
 
 		for (int fila = 0; fila < 3; fila++){
 			for (int columna = 0; columna < 3; columna++){
-				if (casillas[filaPresionada + fila - 1][columnaPresionada + columna - 1].cubierto()	&& (filaPresionada + fila - 1 > 0) && (columnaPresionada + columna - 1 > 0)	&& (filaPresionada + fila - 1 < filasTablero + 1) && (columnaPresionada + columna - 1 < columnasTablero + 1))
+				if (casillas[filaPresionada + fila - 1][columnaPresionada + columna - 1].cubierto()	
+						&& (filaPresionada + fila - 1 > 0) && (columnaPresionada + columna - 1 > 0)	
+						&& (filaPresionada + fila - 1 < filasTablero + 1) 
+						&& (columnaPresionada + columna - 1 < columnasTablero + 1))
 					cubierta(filaPresionada + fila - 1, columnaPresionada + columna - 1 );
 			}
 		}
@@ -329,13 +330,13 @@ public class GameBuscamina extends Activity {
 			for (int columna = 1; columna < columnasTablero + 1; columna++){
 				casillas[fila][columna].fijarCasillaDeshabilitada(false);
 				
-				if (casillas[fila][columna].existeMinas() && !casillas[fila][columna].cubierto())
+				if (casillas[fila][columna].existeMinas() && !casillas[fila][columna].bandera())
 					casillas[fila][columna].fijarIconoMinas(false);
 				
-			/*	if (!casillas[fila][columna].existeMinas() && casillas[fila][columna].cubierto())
-					casillas[fila][columna].marcarIcono(false);*/
+			   if (!casillas[fila][columna].existeMinas() && casillas[fila][columna].bandera())
+					casillas[fila][columna].marcarBandera(false);;
 
-				if (casillas[fila][columna].cubierto())
+				if (casillas[fila][columna].bandera())
 					casillas[fila][columna].fijarPresionado(false);
 			}
 		}

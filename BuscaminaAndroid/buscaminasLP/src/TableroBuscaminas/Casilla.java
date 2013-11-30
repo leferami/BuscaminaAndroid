@@ -1,4 +1,6 @@
 package TableroBuscaminas;
+import org.apache.http.HttpVersion;
+
 import com.example.buscaminaslp.R;
 
 import android.content.Context;
@@ -8,7 +10,7 @@ import android.widget.Button;
 public class Casilla extends Button{
 	private boolean cubierto; 
 	private boolean estadoMina; 
-	private boolean marcado;
+	private boolean bandera;
 	private boolean presionado; 
 	private int numeroMinasAlrededor; 
 	private boolean preguntaMarcada;
@@ -20,7 +22,7 @@ public class Casilla extends Button{
 	public void valoresIniciales(){
 		cubierto = true;
 		estadoMina = false;
-		marcado = false;
+		bandera = false;
 		presionado = true;
 		preguntaMarcada = false;
 		numeroMinasAlrededor = 0;
@@ -72,9 +74,7 @@ public class Casilla extends Button{
 	/**
 	 * @param habilitar Estado del icono de la mina
 	 * Fijar si se encuentra una mina**/
-	public void fijarIconoMinas(boolean habilitar){
-			this.setBackgroundResource(R.drawable.casilla_bomba);
-	}
+	
 	
 	public void cambiarNumeroMinasAlrededor(int number){
 		this.setBackgroundResource(R.drawable.casilla_plomo);
@@ -100,15 +100,15 @@ public class Casilla extends Button{
 	
 	/**
 	 * @return marcado */
-	public boolean marcado(){
-		return marcado;
+	public boolean bandera(){
+		return bandera;
 	}
 	
 	/**
 	 * @param marcado
 	 * fijar si la casilla esta marcada*/
-	public void fijarMarcado(boolean marcado){
-		this.marcado = marcado;
+	public void fijarBandera(boolean marcado){
+		this.bandera = marcado;
 	}
 	
 	/**
@@ -118,10 +118,7 @@ public class Casilla extends Button{
 		numeroMinasAlrededor = numero;
 	}
 	
-	public void fijarNumAlre(int number)//
-	{
-		this.setBackgroundResource(R.drawable.casilla_plomo);
-	}
+
 	
 	/**
 	 * @return numeroMinasAlrededor*/
@@ -137,12 +134,29 @@ public class Casilla extends Button{
 	
 	/**
 	 * fijar mina como marcada*/
-	public void marcarIcono(boolean enabled){
+	public void marcarBandera(boolean hablitar){
 		this.setBackgroundResource(R.drawable.casilla_bandera);
-
-		if (!enabled){
+		if(! hablitar)
+		{
 			this.setBackgroundResource(R.drawable.casilla_plomo);
 		}
+
+	}
+	
+	/**
+	 * fijar Bandera*/
+	
+public void fijarIconoMinas(boolean habilitar){
+		
+		if (!habilitar)
+			{
+				this.setBackgroundResource(R.drawable.casilla_bomba);
+			}
+			else
+			{
+				this.setBackgroundResource(R.drawable.casilla_bomba_seleccionada);
+			}
+			
 	}
 	
 	public boolean presionado(){
@@ -154,21 +168,7 @@ public class Casilla extends Button{
 		presionado = clickable;
 	}
 	
-	public boolean preMaracada(){
-		return preguntaMarcada;
-	}
 	
-	public void fijarPreMarcada (boolean preMarcada){
-		preguntaMarcada = preMarcada;
-	}
-	
-	public void fijarCasillasMarcada(boolean enabled)
-	{
-		if (!enabled)
-		{
-			this.setBackgroundResource(R.drawable.casilla_i);
-		}
-	}
 	
 	public void limpiaTodo()
 	{
