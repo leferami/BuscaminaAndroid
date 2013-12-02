@@ -12,6 +12,7 @@ import android.widget.*;
 import android.widget.TableRow.LayoutParams;
 
 public class GameBuscamina extends Activity {
+	private JugarActivity Ja = new JugarActivity();
 
 	private String nivelBuscaminas;
 	private Integer filasTablero = 0;
@@ -41,6 +42,7 @@ public class GameBuscamina extends Activity {
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -86,6 +88,16 @@ public class GameBuscamina extends Activity {
 		txtCronometro = (TextView) findViewById(R.id.Cronometro);		
 		txtMinas = (TextView) findViewById(R.id.Minas);
 		txtMinas.setText(minasEncontradas+"/"+minasTablero);//Seteas las minas encontradas
+		
+		botonSalir = (Button) findViewById(R.id.salir);
+		botonSalir.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Ja.Ja.finish();
+				finish();
+			}
+		});
 		
 		botonReiniciar = (Button) findViewById(R.id.restart);
 		botonReiniciar.setOnClickListener(new OnClickListener() {

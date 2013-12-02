@@ -9,9 +9,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MenuPrincipal extends Activity {
+	
+	public static Activity Mp; 
+	
 	private Button jugar, puntajes, creditos, reglas;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Mp = this;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_menu_principal);
 		

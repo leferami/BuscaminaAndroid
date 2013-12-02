@@ -85,16 +85,37 @@ public class Casilla extends Button{
 	public void actualizarNumero(int text){
 		if (text != 0){
 			this.setText(Integer.toString(text));
-			if(text == 1 || text == 2 || text ==3)
-				this.setTextColor(Color.BLUE);
-			else if(text == 4 || text == 4 || text ==6)
-				this.setTextColor(Color.RED);
-			else if(text == 7)
-				this.setTextColor(Color.rgb(47, 79, 79));
-			else if(text == 8)
-				this.setTextColor(Color.rgb(71, 71, 71));
-			else if(text == 9)
-				this.setTextColor(Color.rgb(205, 205, 0));
+			if(text== 1){
+				this.setBackgroundResource(R.drawable.casilla_1);
+				this.setTextColor(Color.WHITE);}
+			else if(text == 2){
+				this.setBackgroundResource(R.drawable.casilla_2);
+				this.setTextColor(Color.WHITE);
+			}
+			else if(text == 3){
+				this.setBackgroundResource(R.drawable.casilla_3);
+				this.setTextColor(Color.WHITE);
+			}
+			else if(text == 4){
+				this.setBackgroundResource(R.drawable.casilla_4);
+				this.setTextColor(Color.WHITE);
+			}
+			else if(text == 5){
+				this.setBackgroundResource(R.drawable.casilla_5);
+				this.setTextColor(Color.WHITE);
+			}
+			else if(text == 6){
+				this.setBackgroundResource(R.drawable.casilla_6);
+				this.setTextColor(Color.WHITE);
+			}
+			else if(text == 7){
+				this.setBackgroundResource(R.drawable.casilla_7);
+				this.setTextColor(Color.WHITE);
+			}
+			else if(text == 8){
+				this.setBackgroundResource(R.drawable.casilla_8);
+				this.setTextColor(Color.WHITE);
+			}
 		}
 	}
 	
