@@ -1,13 +1,15 @@
 package com.example.buscaminaslp;
+import java.io.*;
 import java.util.Random;
 
 import TableroBuscaminas.Casilla;
 import android.os.*;
 import android.app.Activity;
+import android.content.Context;
 import android.content.res.Configuration;
+import android.util.Log;
 import android.view.*;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
+import android.view.View.*;
 import android.widget.*;
 import android.widget.TableRow.LayoutParams;
 
@@ -371,10 +373,6 @@ public class GameBuscamina extends Activity {
 		minasEncontradas = 00;
 	}
 	
-
-	
-	
-	
 	private Runnable updateTimeElasped = new Runnable(){//Modificar al formato 00:00:00
 		public void run(){
 			long milisegundos = System.currentTimeMillis();
@@ -392,4 +390,23 @@ public class GameBuscamina extends Activity {
 		}
 	};
 
+	public void escribirArchivo(String nivel,String nombre, String tiempo){
+		OutputStreamWriter escritor=null;
+		try{
+		    escritor=new OutputStreamWriter(openFileOutput(nivel+".txt", Context.MODE_APPEND));
+		    escritor.write(nombre+";"+tiempo);
+		    escritor.write("\n");		    
+		}
+		catch (Exception ex){
+		    Log.e("Buscaminas", "Error al escribir el archivo");
+		}
+		finally{
+			try {
+				if(escritor!=null)
+					escritor.close();
+			}catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }

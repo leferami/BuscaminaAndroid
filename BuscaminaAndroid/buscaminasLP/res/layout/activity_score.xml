@@ -23,12 +23,49 @@
             <LinearLayout 
                 android:id="@+id/tabLayout"
                 android:orientation="vertical"
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent">
+                android:layout_height="fill_parent"
+                android:layout_width="fill_parent"
+                android:gravity="center">
+                
+                <TextView
+                    android:id="@+id/titulo"
+                    android:layout_width="520dp"
+                    android:layout_height="40dp"
+                    android:text="RANK\t\t\t\t\tNOMBRE\t\t\t\t\tTIEMPO" 
+                    android:textStyle="bold"
+	    			android:textSize="30sp" />
+                <LinearLayout
+	                android:id="@+id/tabLayout"
+	                android:layout_width="520dp"
+	                android:layout_height="350dp"
+	                android:gravity="center"
+	                android:orientation="horizontal" >
+	                
+                    <TextView
+	                    android:id="@+id/rank"
+	                    android:layout_width="120dp"
+	                    android:layout_height="350dp"
+	                    android:text="1.)\n2.)\n3.)\n4.)\n5.)\n6.)\n7.)\n8.)\n9.)\n10.)" 
+	                    android:textStyle="bold"
+		    			android:textSize="25sp" 
+		    			android:gravity="center"/>
+                    <TextView
+		                android:id="@+id/contenidoNombre"
+		                android:layout_width="190dp"
+		                android:layout_height="310dp"
+		                android:textStyle="bold"
+		    			android:textSize="25sp"
+		    			android:gravity="center"/>
+                    <TextView
+		                android:id="@+id/contenidoTiempo"
+		                android:layout_width="190dp"
+		                android:layout_height="310dp"
+		                android:textStyle="bold"
+		    			android:textSize="25sp"
+		    			android:gravity="center"/>
+                    </LinearLayout>
                 
             </LinearLayout>
         </FrameLayout>
-        
     </LinearLayout>
-
 </TabHost>
