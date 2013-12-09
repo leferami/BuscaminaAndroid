@@ -19,8 +19,8 @@ public class ScoreActivity extends TabActivity {
 	private Object[] fila;
 	private Jugador[] jugador = new Jugador[5];
 	
-	private TabHost contenedorPestaña;
-	private TabSpec pestaña;
+	private TabHost contenedorPestana;
+	private TabSpec pestana;
 	private ArrayList<Jugador> listaJugador;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,31 +32,31 @@ public class ScoreActivity extends TabActivity {
 		escribir("dificil", "jose", "240");
 		escribir("personalizado", "Brenda", "200");
 		
-		contenedorPestaña =(TabHost) findViewById(android.R.id.tabhost);
-		contenedorPestaña.setup();
+		contenedorPestana =(TabHost) findViewById(android.R.id.tabhost);
+		contenedorPestana.setup();
 	
-		pestaña = contenedorPestaña.newTabSpec("facil")
+		pestana = contenedorPestana.newTabSpec("facil")
 				.setIndicator("Facil")
 				.setContent(R.id.tabLayout);
-		contenedorPestaña.addTab(pestaña);
+		contenedorPestana.addTab(pestana);
 		
-		pestaña = contenedorPestaña.newTabSpec("intermedio")
+		pestana = contenedorPestana.newTabSpec("intermedio")
 				.setIndicator("Intermedio")
 				.setContent(R.id.tabLayout);
-		contenedorPestaña.addTab(pestaña);
+		contenedorPestana.addTab(pestana);
 		
-		pestaña = contenedorPestaña.newTabSpec("dificil")
+		pestana = contenedorPestana.newTabSpec("dificil")
 				.setIndicator("Dificil")
 				.setContent(R.id.tabLayout);
-		contenedorPestaña.addTab(pestaña);
+		contenedorPestana.addTab(pestana);
 		
-		pestaña = contenedorPestaña.newTabSpec("personalizado")
+		pestana = contenedorPestana.newTabSpec("personalizado")
 				.setIndicator("Personalizado")
 				.setContent(R.id.tabLayout);
-		contenedorPestaña.addTab(pestaña);
+		contenedorPestana.addTab(pestana);
 				
-		contenedorPestaña.setCurrentTab(0);
-		contenedorPestaña.setOnTabChangedListener(new cambia());
+		contenedorPestana.setCurrentTab(0);
+		contenedorPestana.setOnTabChangedListener(new cambia());
 		
 	}
 	
