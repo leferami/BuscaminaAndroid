@@ -5,7 +5,10 @@ import java.util.Random;
 import TableroBuscaminas.Casilla;
 import android.os.*;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.util.Log;
 import android.view.*;
@@ -37,10 +40,12 @@ public class GameBuscamina extends Activity {
 	private TextView txtMinas;
 	private TableLayout campoMinas;
 	private int minasEncontradas = 00;
-	private int minasExistente;
+	private int contadorMinas;
+	private String nombreJugador;
 	
 	private Button botonReiniciar;
     private Button botonSalir;
+    private AlertDialog.Builder adb;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +55,15 @@ public class GameBuscamina extends Activity {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_buscamina);
+				
+		adb = new AlertDialog.Builder(this);
+		
 		
 		nivelBuscaminas = (String) getIntent().getSerializableExtra("nivel");
 		tituloBuscamina = (TextView) findViewById(R.id.txtNiveles);
 		tituloBuscamina.setText("BUSCAMINA - " +nivelBuscaminas.toUpperCase());	
 					
+		
 		if(nivelBuscaminas.equals("Facil")){
 			filasTablero = 8;
 			columnasTablero = 8;
@@ -101,7 +110,7 @@ public class GameBuscamina extends Activity {
 			}
 		});
 		
-		botonReiniciar = (Button) findViewById(R.id.restart);
+		botonReiniciar = (Button) findViewById(R.id.reiniciar);
 		botonReiniciar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -125,7 +134,7 @@ public class GameBuscamina extends Activity {
 		crearCamposMinas();
 		mostrarCamposMinas();
 		perdistes=false;
-		minasExistente = minasTablero;
+		contadorMinas = 0;
 		segundos = 0;
 	}
 	
@@ -183,6 +192,9 @@ public class GameBuscamina extends Activity {
 							if (casillas[filasActivasMinas][columnasActivasMinas].existeMinas()){
 								juegoFinalizado(filasActivasMinas,columnasActivasMinas);
 							}
+							if (verificarJuegoGanado()){
+								juegoGanado();
+							}
 						}
 					}
 				});
@@ -220,6 +232,11 @@ public class GameBuscamina extends Activity {
 											{
 												juegoFinalizado(filasActivasMinas + filasPrevias, columnasActivasMinas + ColumnasPrevias);
 											}
+											if (verificarJuegoGanado())
+											{
+												juegoGanado();
+												
+											}
 										}
 									}
 								}
@@ -232,13 +249,14 @@ public class GameBuscamina extends Activity {
 						{
 							if (!casillas[filasActivasMinas][columnasActivasMinas].bandera() )
 							{
-								casillas[filasActivasMinas][columnasActivasMinas].fijarCasillaDeshabilitada(false);
-								casillas[filasActivasMinas][columnasActivasMinas].marcarBandera(true);
-								casillas[filasActivasMinas][columnasActivasMinas].fijarBandera(true);
-								minasEncontradas--; 
-							}
-							
-							else
+								if(contadorMinas < minasTablero){
+									casillas[filasActivasMinas][columnasActivasMinas].fijarCasillaDeshabilitada(false);
+									casillas[filasActivasMinas][columnasActivasMinas].marcarBandera(true);
+									casillas[filasActivasMinas][columnasActivasMinas].fijarBandera(true);
+									contadorMinas++;
+									txtMinas.setText(contadorMinas+"/"+minasTablero);
+								}
+							}else
 							{
 								casillas[filasActivasMinas][columnasActivasMinas].fijarCasillaDeshabilitada(true);
 								casillas[filasActivasMinas][columnasActivasMinas].limpiaTodo();
@@ -246,7 +264,8 @@ public class GameBuscamina extends Activity {
 								
 								if (casillas[filasActivasMinas][columnasActivasMinas].bandera())
 								{
-									minasEncontradas++; 
+									contadorMinas--; 
+									txtMinas.setText(contadorMinas+"/"+minasTablero);
 								}
 								casillas[filasActivasMinas][columnasActivasMinas].fijarBandera(false);
 							}
@@ -259,7 +278,61 @@ public class GameBuscamina extends Activity {
 		}
 	}
 	
+	private boolean verificarJuegoGanado(){
+		for (int filas = 1; filas < filasTablero + 1; filas++)
+		{
+			for (int columnas = 1; columnas < columnasTablero + 1; columnas++)
+			{
+				if (!casillas[filas][columnas].existeMinas() && casillas[filas][columnas].cubierto())
+				{
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	private void juegoGanado()
+	{
+		detenerTiempo();
+		comenzarTiempo = false;
+		perdistes = true;
+
+		for (int filas = 1; filas < filasTablero + 1; filas++)
+		{
+			for (int columnas = 1; columnas < columnasTablero + 1; columnas++)
+			{
+				casillas[filas][columnas].setClickable(false);
+				if (casillas[filas][columnas].existeMinas())
+				{
+					casillas[filas][columnas].fijarBandera(false);
+					casillas[filas][columnas].marcarBandera(true);
+				}
+			}
+		}
+
+		Toast.makeText(GameBuscamina.this,"Ganastes el Juego",Toast.LENGTH_LONG).show();
+		nombreJugador();
+	}
 	
+	public void nombreJugador(){
+		final EditText input = new EditText(this);
+		adb.setTitle("Nombre del Jugador");
+		adb.setView(input);
+		adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				nombreJugador = input.getText().toString();
+			}
+		}); 
+		adb.setNegativeButton("Cancel", null);
+		adb.show();
+		escribirArchivo(nivelBuscaminas, nombreJugador, ""+segundos);
+		
+	}
+
 	/**Comienza el tiempo a transcurrir**/
 	public void comenzarTiempo(){
 		if (segundos == 0){
@@ -292,11 +365,7 @@ public class GameBuscamina extends Activity {
 				fila--;
 			}
 		}
-		
-		
-
 		int contadorMinasCercanas;
-
 		for (int fila = 0; fila < filasTablero + 2; fila++){
 			for (int columna = 0; columna < columnasTablero + 2; columna++){
 				contadorMinasCercanas = 0;
@@ -337,6 +406,7 @@ public class GameBuscamina extends Activity {
 	}
 	
 	private void juegoFinalizado(int currentRow, int currentColumn){
+		perdistes = true;
 		detenerTiempo(); 
 		comenzarTiempo = false;
 
@@ -362,6 +432,8 @@ public class GameBuscamina extends Activity {
 		tiempo.removeCallbacks(updateTimeElasped);
 	}
 	
+	/**
+	 * Acabar Juego*/
 	private void salirJuego(){
 		detenerTiempo(); 
 		txtCronometro.setText("000");
@@ -370,6 +442,7 @@ public class GameBuscamina extends Activity {
 		
 		comenzarTiempo = false;
 		setearMinas = false;
+		perdistes = false;
 		minasEncontradas = 00;
 	}
 	

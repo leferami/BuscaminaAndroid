@@ -73,23 +73,27 @@ public class ScoreActivity extends TabActivity {
 				listaJugador = leerArchivo(tabId);
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
+				Collections.sort(listaJugador, Jugador.ValorComparatorDesc);
 				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
 				
 			}else if(tabId.equals("intermedio")){
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
 				listaJugador = leerArchivo(tabId);
+				Collections.sort(listaJugador, Jugador.ValorComparatorDesc);
 				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
 				
 			}else if(tabId.equals("dificil")){
 				listaJugador = leerArchivo(tabId);
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
+				Collections.sort(listaJugador, Jugador.ValorComparatorDesc);
 				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
 			}else{
 				listaJugador = leerArchivo(tabId);
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
+				Collections.sort(listaJugador, Jugador.ValorComparatorDesc);
 				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
 			}
 			

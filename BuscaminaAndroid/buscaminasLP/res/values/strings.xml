@@ -42,5 +42,6 @@
     <string name="no_minas">No.MINAS</string>
     <string name="title_activity_puntajes">Puntajes</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_opciones">Opciones</string>
 
 </resources>

@@ -113,7 +113,7 @@
         android:paddingLeft="200dp"
         android:gravity="center">
 	        <Button
-	            android:id="@+id/restart"
+	            android:id="@+id/reiniciar"
 	            android:layout_width="70dp"
 	            android:layout_height="70dp"
 	            android:background="@drawable/animacion_reiniciar"
