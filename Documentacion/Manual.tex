@@ -1,0 +1,127 @@
+\documentclass[12pt,oneside]{book}
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\usepackage{wrapfig}				%Inclusion de Graficos al lado de Texto
+\usepackage[rflt]{floatflt}				%Para meter figuras flotantes entre el texto.
+\usepackage{enumerate}				%Para los items enumerados
+\geometry{a4paper}                   			% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or epsß with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+
+\usepackage[spanish]{babel}			% Permite que partes automáticas del documento aparezcan en castellano.
+\usepackage[utf8]{inputenc}			% Permite escribir tildes y otros caracteres directamente en el .tex
+\usepackage[T1]{fontenc}			% Asegura que el documento resultante use caracteres de una fuente apropiada.
+
+\usepackage{hyperref}				% Permite poner urls y links dentro del documento
+\begin{document}
+
+\begin{titlepage}
+
+\begin{center}
+\vspace*{-1in}
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=8cm]{./espol}
+\end{center}
+\end{figure}
+
+FACULTAD DE INGENIERIA \\
+\vspace*{0.15in}
+ELECTRICA Y COMPUTACIÓN \\
+\vspace*{0.6in}
+\begin{large}
+ING: JAVIER TIBAU\\
+\end{large}
+\vspace*{0.4in}
+\begin{Large}
+\textbf{PROYECTO BUSCAMINAS EN ANDROID} \newline \newline
+
+\begin{figure}[htb]
+\begin{center}
+\includegraphics[width=3cm]{./icono}
+\end{center}
+\end{figure}
+
+\end{Large}
+\begin{large}
+Integrantes:\\Leonel Ramírez\\José Vélez\\Kevin Campuzano\\ 
+\end{large}
+\vspace*{0.3in}
+\rule{80mm}{0.1mm}\\
+\vspace*{0.1in}
+\begin{large}
+Proyecto - Android
+\end{large}
+\end{center}
+
+\end{titlepage}
+
+
+
+\tableofcontents
+
+\chapter{Objetivos}
+Objetivos Generales
+\begin{itemize}
+\item Desarollar aplicaciones para dispositivos moviles con sistema operativo android.
+\item Practicar la programación Orientada a Objetos.
+\item Aprender a utilizar las herramientas que nos facilita el plugin de android.
+\end{itemize}
+Objetivos Especificos
+\begin{itemize}
+\item Mejorar la interfaz de usuario y aprendar el trato al Jugador.
+\item Aprender el area lógica del juego.
+\end{itemize}
+
+\chapter{Derechos del Autor}
+La aplicaci\'on que simula el Juego de Buscaminas que fue creada por prop\'ositos acad\'emicos como proyecto del Primer Parcial de la materia de Lenguajes de Programación que dicta el Ing. Tibau en el presente semestre <II Termino-2013>.
+\\La cual fue desarrollada en conjunto por \\-José Velez \\ -Leonel Ramirez \\ -Kevin Campuzano
+
+
+\chapter{Introducción}
+Buscaminas es un videojuego para un solo jugador inventado por Robert Donner en 1989. El objetivo del juego es despejar un campo de minas sin detonar ninguna.\\
+Este manual de usuario pretende brindar un conjunto de instrucciones al Usuario para facilitar el funcionamiento del juego BUSCAMINAS. \ \\ \\ 
+Por otro lado, también brinda guías para el juego y describe las diferentes instancias que tiene el mismo. \ \\ \\
+Con el fin de aprovechar al máximo la información de este documento, para ejecutar la aplicación de BUSCAMINAS el usuario debe tener en su poder un dispositivo movil que tenga instalado un Sistema Operativo Android.
+
+\chapter{Guía del Juego}
+
+En este capitulo explicaremos la reglas del juego BUSCAMINAS y se detallar\'a el uso del simulador del juego en las diferentes instancias que tiene el mismo. 
+
+\include{BuscaminasApp/Reglas}
+\include{BuscaminasApp/Simulador}
+
+\chapter{Preguntas Frecuentes}
+
+\begin{center}
+\textbf{¿Al escoger la opción salir mientras estoy jugando una partida, la partida se guarda automaticamente?} \\ No, una partida solo se guarda el puntaje una vez ganado el juego.
+\ \\ \ \\ \ \\
+
+\textbf{¿Puedo parar el tiempo en algún instante de la partida?} \\ No, el tiempo se inicia automaticamente cuando se inicia la partida y solo se detiene al finalizar la misma.
+\end{center}
+
+
+
+\chapter{Casos de Usos}
+\include{BuscaminasApp/casos}
+
+\chapter{Retroalimientacion}
+\include{BuscaminasApp/}
+
+\chapter{Alcance del Proyecto}
+\include{BuscaminasApp/desarrollo}
+
+\chapter{Conclusiones}
+\begin{itemize}
+\item El lenguaje Android es  muy complicado ya  que trabaja con  Java y XML, a pesar de eso podemos encontrar muchas referencias en la web como google, YouTube y otros paper de referencias.
+
+\item La programación en Android tiene bastante que ver con el diseño de las interfaces en  las aplicaciones,  por tal motivo aprendimos a usar correctamente los distintas formas de layout, para poderlas a usar en las diferentes dimensiones de pantalla. 
+
+\item Comprendimos que el usuario  busca una interfaz sencilla y directa, por el motivo que si existe una relativa cantidad  de ventanas el usuario tiende aburrirse.
+
+\end{itemize}
+
+
+\end{document}  
