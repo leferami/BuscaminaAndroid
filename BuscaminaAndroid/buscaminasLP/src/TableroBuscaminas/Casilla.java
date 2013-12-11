@@ -1,8 +1,5 @@
 package TableroBuscaminas;
-import org.apache.http.HttpVersion;
-
 import com.example.buscaminaslp.R;
-
 import android.content.Context;
 import android.graphics.*;
 import android.widget.Button;
@@ -13,8 +10,6 @@ public class Casilla extends Button{
 	private boolean bandera;
 	private boolean presionado; 
 	private int numeroMinasAlrededor; 
-	private boolean preguntaMarcada;
-	
 	public Casilla (Context context){
 		super(context);
 	}
@@ -24,11 +19,8 @@ public class Casilla extends Button{
 		estadoMina = false;
 		bandera = false;
 		presionado = true;
-		preguntaMarcada = false;
 		numeroMinasAlrededor = 0;
-
 		this.setBackgroundResource(R.drawable.casilla_azul);
-		
 	}
 	
 	/** Marca Bloque con una mina debajo*/
@@ -71,11 +63,6 @@ public class Casilla extends Button{
 			this.setBackgroundResource(R.drawable.casilla_azul);
 	}
 	
-	/**
-	 * @param habilitar Estado del icono de la mina
-	 * Fijar si se encuentra una mina**/
-	
-	
 	public void cambiarNumeroMinasAlrededor(int number){
 		this.setBackgroundResource(R.drawable.casilla_plomo);
 		actualizarNumero(number);
@@ -84,37 +71,29 @@ public class Casilla extends Button{
 	/**Poner el numero de minas que se encuentra alrededor*/
 	public void actualizarNumero(int text){
 		if (text != 0){
-			this.setText(Integer.toString(text));
 			if(text== 1){
-				this.setBackgroundResource(R.drawable.casilla_1);
-				this.setTextColor(Color.WHITE);}
+				this.setBackgroundResource(R.drawable.casilla1);
+			}
 			else if(text == 2){
-				this.setBackgroundResource(R.drawable.casilla_2);
-				this.setTextColor(Color.WHITE);
+				this.setBackgroundResource(R.drawable.casilla2);
 			}
 			else if(text == 3){
-				this.setBackgroundResource(R.drawable.casilla_3);
-				this.setTextColor(Color.WHITE);
+				this.setBackgroundResource(R.drawable.casilla3);
 			}
 			else if(text == 4){
-				this.setBackgroundResource(R.drawable.casilla_4);
-				this.setTextColor(Color.WHITE);
+				this.setBackgroundResource(R.drawable.casilla4);
 			}
 			else if(text == 5){
-				this.setBackgroundResource(R.drawable.casilla_5);
-				this.setTextColor(Color.WHITE);
+				this.setBackgroundResource(R.drawable.casilla5);
 			}
 			else if(text == 6){
-				this.setBackgroundResource(R.drawable.casilla_6);
-				this.setTextColor(Color.WHITE);
+				this.setBackgroundResource(R.drawable.casilla6);
 			}
 			else if(text == 7){
-				this.setBackgroundResource(R.drawable.casilla_7);
-				this.setTextColor(Color.WHITE);
+				this.setBackgroundResource(R.drawable.casilla7);
 			}
 			else if(text == 8){
-				this.setBackgroundResource(R.drawable.casilla_8);
-				this.setTextColor(Color.WHITE);
+				this.setBackgroundResource(R.drawable.casilla8);
 			}
 		}
 	}
@@ -139,8 +118,6 @@ public class Casilla extends Button{
 		numeroMinasAlrededor = numero;
 	}
 	
-
-	
 	/**
 	 * @return numeroMinasAlrededor*/
 	public int obtenerMinasAlrededor(){
@@ -157,27 +134,18 @@ public class Casilla extends Button{
 	 * fijar mina como marcada*/
 	public void marcarBandera(boolean hablitar){
 		this.setBackgroundResource(R.drawable.casilla_bandera);
-		if(! hablitar)
-		{
+		if(! hablitar){
 			this.setBackgroundResource(R.drawable.casilla_plomo);
 		}
-
 	}
 	
 	/**
 	 * fijar Bandera*/
-	
-public void fijarIconoMinas(boolean habilitar){
-		
+	public void fijarIconoMinas(boolean habilitar){
 		if (!habilitar)
-			{
 				this.setBackgroundResource(R.drawable.casilla_bomba);
-			}
-			else
-			{
+		else
 				this.setBackgroundResource(R.drawable.casilla_bomba_seleccionada);
-			}
-			
 	}
 	
 	public boolean presionado(){
@@ -188,9 +156,7 @@ public void fijarIconoMinas(boolean habilitar){
 	public void fijarPresionado(boolean clickable){
 		presionado = clickable;
 	}
-	
-	
-	
+
 	public void limpiaTodo()
 	{
 		this.setText("");

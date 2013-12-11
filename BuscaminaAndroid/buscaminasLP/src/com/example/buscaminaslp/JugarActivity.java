@@ -9,12 +9,10 @@ import android.widget.*;
 
 public class JugarActivity extends Activity {
 	public static Activity Ja; 
-	private MenuPrincipal Mp = new MenuPrincipal(); 
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		Ja = this;
-		Mp.Mp.finish();
+		//Mp.Mp.finish();
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_jugar);
 		

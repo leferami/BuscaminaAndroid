@@ -17,7 +17,10 @@ import android.widget.*;
 import android.widget.TableRow.LayoutParams;
 
 public class GameBuscamina extends Activity {
+	//private MenuPrincipal Mp = new MenuPrincipal(); 
 	private JugarActivity Ja = new JugarActivity();
+	private PersonalizadoActivity Pa = new PersonalizadoActivity(); 
+
 
 	private String nivelBuscaminas;
 	private Integer filasTablero = 0;
@@ -50,14 +53,11 @@ public class GameBuscamina extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		
-
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_buscamina);
-				
 		adb = new AlertDialog.Builder(this);
-		
 		
 		nivelBuscaminas = (String) getIntent().getSerializableExtra("nivel");
 		tituloBuscamina = (TextView) findViewById(R.id.txtNiveles);
@@ -79,9 +79,8 @@ public class GameBuscamina extends Activity {
 			columnasTablero = 12;
 			minasTablero = 20;
 			dimensionCasillas = 40; 
-		}else{
-			
-			filasTablero = (Integer) getIntent().getSerializableExtra("filas");
+		}else if(nivelBuscaminas.equals("Personalizado")){
+			filasTablero = ((Integer) getIntent().getSerializableExtra("filas"));
 			columnasTablero  = (Integer) getIntent().getSerializableExtra("columnas");
 			minasTablero = (Integer) getIntent().getSerializableExtra("minas");
 			
@@ -89,7 +88,7 @@ public class GameBuscamina extends Activity {
 				dimensionCasillas = 70; 
 			}else if(filasTablero <= 8 || columnasTablero <= 8){
 				dimensionCasillas = 60; 
-			}else if(filasTablero <= 10|| columnasTablero <= 10){
+			}else if(filasTablero <= 10 || columnasTablero <= 10){
 				dimensionCasillas = 50; 
 			}else {
 				dimensionCasillas = 40; 
@@ -102,11 +101,11 @@ public class GameBuscamina extends Activity {
 		
 		botonSalir = (Button) findViewById(R.id.salir);
 		botonSalir.setOnClickListener(new OnClickListener() {
-			
 			@Override
 			public void onClick(View v) {
-				Ja.Ja.finish();
 				finish();
+				Pa.Pa.finish();
+				Ja.Ja.finish();	
 			}
 		});
 		
@@ -139,7 +138,8 @@ public class GameBuscamina extends Activity {
 	}
 	
 	/**
-	 * Mostrar las minas en pantalla**/
+	 * Mostrar las minas en pantalla
+	 * **/
 	private void mostrarCamposMinas(){
 		int filasT = filasTablero + 1;
 		int columnasT = columnasTablero + 1;
@@ -165,13 +165,9 @@ public class GameBuscamina extends Activity {
 			for (int columnas = 0; columnas < columnasT; columnas++){	
 				casillas[filas][columnas] = new Casilla(this);
 				casillas[filas][columnas].valoresIniciales();
-				
-				
 				final int filasActivasMinas = filas;
 				final int columnasActivasMinas = columnas;
-				
-				casillas[filas][columnas].setOnClickListener(new OnClickListener() {
-					
+				casillas[filas][columnas].setOnClickListener(new OnClickListener() {					
 					@Override
 					public void onClick(View v) {
 						// TODO Auto-generated method stub
@@ -179,64 +175,42 @@ public class GameBuscamina extends Activity {
 							comenzarTiempo();
 							comenzarTiempo = true;
 						}
-						
 						if (!setearMinas){
 							setearMinas = true;
 							fijarMinas(filasActivasMinas, columnasActivasMinas);
-						}
-						
-						if (!casillas[filasActivasMinas][columnasActivasMinas].bandera())
-						{
+						}						
+						if (!casillas[filasActivasMinas][columnasActivasMinas].bandera()){
 							cubierta(filasActivasMinas, columnasActivasMinas);
-							
-							if (casillas[filasActivasMinas][columnasActivasMinas].existeMinas()){
+							if (casillas[filasActivasMinas][columnasActivasMinas].existeMinas())
 								juegoFinalizado(filasActivasMinas,columnasActivasMinas);
-							}
-							if (verificarJuegoGanado()){
+							if (verificarJuegoGanado())
 								juegoGanado();
-							}
 						}
 					}
-				});
-			
+				});			
 				//Agregar bandera		
 				casillas[filas][columnas].setOnLongClickListener(new  OnLongClickListener() {
 					
 					public boolean onLongClick(View v) {
 						
-						if (!casillas[filasActivasMinas][columnasActivasMinas].cubierto() && (casillas[filasActivasMinas][columnasActivasMinas].obtenerMinasAlrededor() > 0) && !perdistes)
-						{
+						if (!casillas[filasActivasMinas][columnasActivasMinas].cubierto() && (casillas[filasActivasMinas][columnasActivasMinas].obtenerMinasAlrededor() > 0) && !perdistes)	{
 							int casillasMinasCercas = 0;
-							for (int filasPrevia = -1; filasPrevia < 2; filasPrevia++)
-							{
-								for (int columnasPrevia = -1; columnasPrevia < 2; columnasPrevia++)
-								{
+							for (int filasPrevia = -1; filasPrevia < 2; filasPrevia++){
+								for (int columnasPrevia = -1; columnasPrevia < 2; columnasPrevia++){
 									if (casillas[filasActivasMinas + filasPrevia][columnasActivasMinas + columnasPrevia].bandera())
-									{
 										casillasMinasCercas++;
-									}
 								}
 							}
 
-							if (casillasMinasCercas == casillas[filasActivasMinas][columnasActivasMinas].obtenerMinasAlrededor())
-							{
-								for (int filasPrevias = -1; filasPrevias < 2; filasPrevias++)
-								{
-									for (int ColumnasPrevias = -1; ColumnasPrevias < 2; ColumnasPrevias++)
-									{
-										if (!casillas[filasActivasMinas + filasPrevias][columnasActivasMinas + ColumnasPrevias].bandera())
-										{
+							if (casillasMinasCercas == casillas[filasActivasMinas][columnasActivasMinas].obtenerMinasAlrededor()){
+								for (int filasPrevias = -1; filasPrevias < 2; filasPrevias++){
+									for (int ColumnasPrevias = -1; ColumnasPrevias < 2; ColumnasPrevias++){
+										if (!casillas[filasActivasMinas + filasPrevias][columnasActivasMinas + ColumnasPrevias].bandera()){
 											cubierta(filasActivasMinas + filasPrevias, columnasActivasMinas + ColumnasPrevias);
-			
 											if (casillas[filasActivasMinas + filasPrevias][columnasActivasMinas + ColumnasPrevias].existeMinas())
-											{
 												juegoFinalizado(filasActivasMinas + filasPrevias, columnasActivasMinas + ColumnasPrevias);
-											}
 											if (verificarJuegoGanado())
-											{
 												juegoGanado();
-												
-											}
 										}
 									}
 								}
@@ -244,11 +218,8 @@ public class GameBuscamina extends Activity {
 							return true;
 						}
 
-						if (casillas[filasActivasMinas][columnasActivasMinas].isClickable() && 
-								(casillas[filasActivasMinas][columnasActivasMinas].isEnabled() || casillas[filasActivasMinas][columnasActivasMinas].bandera()))
-						{
-							if (!casillas[filasActivasMinas][columnasActivasMinas].bandera() )
-							{
+						if (casillas[filasActivasMinas][columnasActivasMinas].isClickable() && (casillas[filasActivasMinas][columnasActivasMinas].isEnabled() || casillas[filasActivasMinas][columnasActivasMinas].bandera())){
+							if (!casillas[filasActivasMinas][columnasActivasMinas].bandera() ){
 								if(contadorMinas < minasTablero){
 									casillas[filasActivasMinas][columnasActivasMinas].fijarCasillaDeshabilitada(false);
 									casillas[filasActivasMinas][columnasActivasMinas].marcarBandera(true);
@@ -256,21 +227,17 @@ public class GameBuscamina extends Activity {
 									contadorMinas++;
 									txtMinas.setText(contadorMinas+"/"+minasTablero);
 								}
-							}else
-							{
+							}else{
 								casillas[filasActivasMinas][columnasActivasMinas].fijarCasillaDeshabilitada(true);
 								casillas[filasActivasMinas][columnasActivasMinas].limpiaTodo();
 								
-								
-								if (casillas[filasActivasMinas][columnasActivasMinas].bandera())
-								{
+								if (casillas[filasActivasMinas][columnasActivasMinas].bandera()){
 									contadorMinas--; 
 									txtMinas.setText(contadorMinas+"/"+minasTablero);
 								}
 								casillas[filasActivasMinas][columnasActivasMinas].fijarBandera(false);
 							}
 						}
-
 						return true;
 					}
 				});
@@ -278,6 +245,10 @@ public class GameBuscamina extends Activity {
 		}
 	}
 	
+	/**
+	 * Determina si ganastes el juego
+	 * @return true si ganastes
+	 */
 	private boolean verificarJuegoGanado(){
 		for (int filas = 1; filas < filasTablero + 1; filas++)
 		{
@@ -292,8 +263,10 @@ public class GameBuscamina extends Activity {
 		return true;
 	}
 
-	private void juegoGanado()
-	{
+	/**
+	 * Ganas el Juego y te presenta una ventana para ingresar tu nombre
+	 */
+	private void juegoGanado(){
 		detenerTiempo();
 		comenzarTiempo = false;
 		perdistes = true;
@@ -310,30 +283,56 @@ public class GameBuscamina extends Activity {
 				}
 			}
 		}
-
-		Toast.makeText(GameBuscamina.this,"Ganastes el Juego",Toast.LENGTH_LONG).show();
+		Toast.makeText(GameBuscamina.this,"GANASTES EL JUEGO",Toast.LENGTH_LONG).show();
 		nombreJugador();
 	}
 	
+	/**
+	 * Presenta la interface de dialogo, que indica 
+	 * que perdistes el juego.
+	 */
+	public void perdistesJuego(){
+		final ImageView perdistes = new ImageView(this);
+		perdistes.setBackgroundResource(R.drawable.triste);
+		perdistes.setMaxHeight(20);
+		adb.setTitle("PERDISTES"); 
+		adb.setView(perdistes);
+		adb.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// TODO Auto-generated method stub
+				finish();
+				Pa.Pa.finish();
+				Ja.Ja.finish();
+			}
+		}); 
+		adb.show();	
+	}
+	
+	/**
+	 * Presenta la interface de dialogo para ingresar 
+	 * el nombre del jugador que gano la partida.
+	 */
 	public void nombreJugador(){
 		final EditText input = new EditText(this);
-		adb.setTitle("Nombre del Jugador");
+		adb.setTitle("Nombre del Jugador"); 
 		adb.setView(input);
-		adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-			
+		adb.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				nombreJugador = input.getText().toString();
+				escribirArchivo(""+nivelBuscaminas.toLowerCase(), ""+nombreJugador, ""+segundos);
+				finish();
+				Pa.Pa.finish();
+				Ja.Ja.finish();
 			}
 		}); 
-		adb.setNegativeButton("Cancel", null);
-		adb.show();
-		escribirArchivo(nivelBuscaminas, nombreJugador, ""+segundos);
-		
+		adb.show();	
 	}
 
-	/**Comienza el tiempo a transcurrir**/
+	/**
+	 * Comienza el tiempo a transcurrir**/
 	public void comenzarTiempo(){
 		if (segundos == 0){
 			tiempo.removeCallbacks(updateTimeElasped);
@@ -346,7 +345,6 @@ public class GameBuscamina extends Activity {
 	 * @param columnasActivas
 	 * Poner aleatoriamente las minas en el tablero**/
 	private void fijarMinas(int filasActivas, int columnasActivas){
-		
 		Random rand = new Random();
 		int filaMina, columnaMina;
 
@@ -359,11 +357,8 @@ public class GameBuscamina extends Activity {
 				if (casillas[filaMina + 1][columnaMina + 1].existeMinas())
 					fila--;
 				casillas[filaMina + 1][columnaMina + 1].ponerMinas();
-			}
-			
-			else{
+			}else
 				fila--;
-			}
 		}
 		int contadorMinasCercanas;
 		for (int fila = 0; fila < filasTablero + 2; fila++){
@@ -405,6 +400,8 @@ public class GameBuscamina extends Activity {
 		return;
 	}
 	
+	/**
+	 * Finalizar el Juego*/	
 	private void juegoFinalizado(int currentRow, int currentColumn){
 		perdistes = true;
 		detenerTiempo(); 
@@ -425,9 +422,11 @@ public class GameBuscamina extends Activity {
 			}
 		}
 		casillas[currentRow][currentColumn].activarMinas();
+		perdistesJuego();
 	}
 	
-	/**Detiene el tiempo**/
+	/**
+	 * Detiene el tiempo**/
 	public void detenerTiempo(){
 		tiempo.removeCallbacks(updateTimeElasped);
 	}
@@ -439,7 +438,7 @@ public class GameBuscamina extends Activity {
 		txtCronometro.setText("000");
 		txtMinas.setText("00/"+minasTablero);
 		campoMinas.removeAllViews();
-		
+	
 		comenzarTiempo = false;
 		setearMinas = false;
 		perdistes = false;
@@ -451,18 +450,20 @@ public class GameBuscamina extends Activity {
 			long milisegundos = System.currentTimeMillis();
 			++segundos;
 
-			if (segundos < 10){
+			if (segundos < 10)
 				txtCronometro.setText("00" + Integer.toString(segundos));
-			}else if (segundos < 100){
+			else if (segundos < 100)
 				txtCronometro.setText("0" + Integer.toString(segundos));
-			}else{
+			else
 				txtCronometro.setText(Integer.toString(segundos));
-			}
 			tiempo.postAtTime(this, milisegundos);
 			tiempo.postDelayed(updateTimeElasped, 1000);
 		}
 	};
 
+	/**
+	 * Escribie en el archivo cuando se gana una partida
+	 * Y se lo guarda en el nivel que corresponda*/
 	public void escribirArchivo(String nivel,String nombre, String tiempo){
 		OutputStreamWriter escritor=null;
 		try{

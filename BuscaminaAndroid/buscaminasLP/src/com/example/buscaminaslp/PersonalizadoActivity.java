@@ -8,10 +8,10 @@ import android.view.View.OnClickListener;
 import android.widget.*;
 
 public class PersonalizadoActivity extends Activity{
-
+	public static Activity Pa; 
+	
 	private NumberPicker np1 = null;
 	private NumberPicker np2 = null;
-	private NumberPicker np3 = null;
 	private int numeroFilas;
 	private int numeroColumnas;
 	private int numeroMinas;
@@ -19,6 +19,7 @@ public class PersonalizadoActivity extends Activity{
 	private Button siguiente;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		Pa = this;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_personalizado);
 		
@@ -27,14 +28,10 @@ public class PersonalizadoActivity extends Activity{
 		np1 = (NumberPicker) findViewById(R.id.npFilas);
 		np1.setMinValue(3);
 		np1.setMaxValue(12);
-		
-		np2 = (NumberPicker) findViewById(R.id.npColumnas);
-		np2.setMinValue(3);
-		np2.setMaxValue(12);
-		
-		np3 = (NumberPicker) findViewById(R.id.npMinas);
-		np3.setMinValue(1);
-		np3.setMaxValue(144);
+				
+		np2 = (NumberPicker) findViewById(R.id.npMinas);
+		np2.setMinValue(1);
+		np2.setMaxValue(144);
 				
 		siguiente = (Button) findViewById(R.id.btnSiguiente);
 		siguiente.setOnClickListener(new OnClickListener() {
@@ -42,8 +39,8 @@ public class PersonalizadoActivity extends Activity{
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				numeroFilas = np1.getValue();
-				numeroColumnas = np2.getValue();
-				numeroMinas = np3.getValue();
+				numeroColumnas = np1.getValue();
+				numeroMinas = np2.getValue();
 				
 				if((numeroFilas*numeroColumnas) <= numeroMinas){
 					Toast.makeText(PersonalizadoActivity.this,"Numero de Minas Excede ",Toast.LENGTH_LONG).show();

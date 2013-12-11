@@ -6,8 +6,6 @@ import java.util.*;
 import TableroBuscaminas.Jugador;
 import android.os.Bundle;
 import android.app.TabActivity;
-import android.content.Context;
-import android.util.Log;
 import android.view.Menu;
 import android.widget.*;
 import android.widget.TabHost.*;
@@ -26,11 +24,6 @@ public class ScoreActivity extends TabActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_score);
-		
-		escribir("facil", "Scarleth", "120");
-		escribir("intermedio", "Brenda", "180");
-		escribir("dificil", "jose", "240");
-		escribir("personalizado", "Brenda", "200");
 		
 		contenedorPestana =(TabHost) findViewById(android.R.id.tabhost);
 		contenedorPestana.setup();
@@ -56,8 +49,7 @@ public class ScoreActivity extends TabActivity {
 		contenedorPestana.addTab(pestana);
 				
 		contenedorPestana.setCurrentTab(0);
-		contenedorPestana.setOnTabChangedListener(new cambia());
-		
+		contenedorPestana.setOnTabChangedListener(new cambia());	
 	}
 	
 	/**
@@ -73,30 +65,29 @@ public class ScoreActivity extends TabActivity {
 				listaJugador = leerArchivo(tabId);
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
-				Collections.sort(listaJugador, Jugador.ValorComparatorDesc);
+				Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
 				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
 				
 			}else if(tabId.equals("intermedio")){
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
 				listaJugador = leerArchivo(tabId);
-				Collections.sort(listaJugador, Jugador.ValorComparatorDesc);
+				Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
 				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
 				
 			}else if(tabId.equals("dificil")){
 				listaJugador = leerArchivo(tabId);
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
-				Collections.sort(listaJugador, Jugador.ValorComparatorDesc);
+				Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
 				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
 			}else{
 				listaJugador = leerArchivo(tabId);
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
-				Collections.sort(listaJugador, Jugador.ValorComparatorDesc);
+				Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
 				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
 			}
-			
 		}
 	}
 
@@ -160,31 +151,10 @@ public class ScoreActivity extends TabActivity {
 	               fila[1] = nivelJ.getTiempoJugador();
 	               contenidoNombre.append(""+fila[0]+"\n");
 	               contenidoTiempo.append(""+fila[1]+"\n");
-	               
 	       }
 	       contenidoNombre.append("------\n------\n------\n------\n------\n------\n------\n------\n------\n------\n");
 			contenidoTiempo.append("------\n------\n------\n------\n------\n------\n------\n------\n------\n------\n");
 			
-		}
-	}
-
-	public void escribir(String nivel,String nombre, String tiempo){
-		OutputStreamWriter escritor=null;
-		try{
-		    escritor=new OutputStreamWriter(openFileOutput(nivel+".txt", Context.MODE_APPEND));
-		    escritor.write(nombre+";"+tiempo);
-		    escritor.write("\n");		    
-		}
-		catch (Exception ex){
-		    Log.e("Buscaminas", "Error al escribir el archivo");
-		}
-		finally{
-			try {
-				if(escritor!=null)
-					escritor.close();
-			}catch (IOException e) {
-				e.printStackTrace();
-			}
 		}
 	}
 }

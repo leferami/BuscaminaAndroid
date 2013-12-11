@@ -20,17 +20,15 @@
                 android:id="@+id/textView1"
                 android:layout_width="match_parent"
                 android:layout_height="fill_parent"
-                android:drawablePadding="2dp"
-                android:lineSpacingExtra="20dp"
-                android:text="                                       Reglas Buscaminas"
+                android:gravity="center"
+                android:text="Reglas Buscaminas"
                 android:textSize="40sp" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:lineSpacingExtra="20dp"
+                android:layout_height="fill_parent"
+                android:gravity="center"
                 android:text="El juego consiste en despejar todas las casillas de una pantalla que no oculten una mina."
                 android:textSize="25sp" />
 
@@ -49,17 +47,17 @@
 
                     <ImageView
                         android:id="@+id/imageView1"
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
+                        android:layout_width="96dp"
+                		android:layout_height="93dp"
                         android:layout_marginLeft="0dp"
                         android:src="@drawable/animacion_reiniciar" />
 
                     <TextView
                         android:id="@+id/textView3"
-                        android:layout_width="231dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="50dp"
-                        android:text="Este botón sirve para reiniciar el tablero de tal manera que las casillas esten todas ocultas"
+                        android:layout_width="297dp"
+                		android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:text="Este botón sirve para reiniciar el tablero de tal manera que las casillas esten todas ocultas."
                         android:textAppearance="?android:attr/textAppearanceLarge"
                         android:typeface="normal" />
 
@@ -72,10 +70,10 @@
 
                     <TextView
                         android:id="@+id/textView4"
-                        android:layout_width="376dp"
-                        android:layout_height="170dp"
-                        android:layout_marginLeft="50dp"
-                        android:text="Este botón sirve para cerrar el juego correctamente y asi evitar que solo quede minimizado"
+                        android:layout_width="300dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="25dp"
+                        android:text="Este botón sirve para cerrar el juego correctamente y asi evitar que solo quede minimizado."
                         android:textAppearance="?android:attr/textAppearanceLarge" />
                 </LinearLayout>
             </LinearLayout>
@@ -84,35 +82,35 @@
             android:layout_width="match_parent"
             android:layout_height="141dp" >
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="96dp"
-                android:layout_height="93dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/casilla_bandera" />
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="96dp"
+                    android:layout_height="93dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="20dp"
+                    android:src="@drawable/casilla_bandera" />
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="297dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="Nos sirve para represenrtar una mina oculta y se la usa teniendo presionado el dedo por aproximadamente un segundo"
+                android:layout_marginLeft="25dp"
+                android:text="Nos sirve para represenrtar una mina oculta y se la usa teniendo presionado el dedo por aproximadamente un segundo."
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <ImageView
                 android:id="@+id/imageView4"
-                android:layout_width="250dp"
-                android:layout_height="138dp"
-                android:layout_marginLeft="25dp"
+                android:layout_width="143dp"
+                android:layout_height="143dp"
+                android:layout_marginLeft="100dp"
                 android:src="@drawable/casilla_bomba" />
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="225dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
-                android:text="Esta es la mina que van a estar ocultas en cualquier casilla del tablero"
+                android:layout_width="300dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="25dp"
+                android:text="Esta es la mina que van a estar ocultas en cualquier casilla del tablero."
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
         </LinearLayout>
@@ -120,7 +118,7 @@
              <LinearLayout
                  android:layout_width="match_parent"
                  android:layout_height="match_parent"
-                 android:layout_marginLeft="10dp"
+                 android:gravity="center"
                  android:layout_marginTop="50dp" >
 
             <ImageView
@@ -128,65 +126,66 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="50dp"
-                android:src="@drawable/casilla_1" />
+                android:src="@drawable/casilla1" />
             
              <ImageView
                 android:id="@+id/imageView6"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/casilla_2" />
+                android:src="@drawable/casilla2" />
 
             <ImageView
                 android:id="@+id/imageView7"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/casilla_4" />
+                android:src="@drawable/casilla3" />
 
             <ImageView
                 android:id="@+id/imageView8"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/casilla_3" />
+                android:src="@drawable/casilla4" />
 
             <ImageView
                 android:id="@+id/imageView9"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/casilla_5" />
+                android:src="@drawable/casilla5" />
 
             <ImageView
                 android:id="@+id/imageView10"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/casilla_6" />
+                android:src="@drawable/casilla6" />
 
             <ImageView
                 android:id="@+id/imageView11"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/casilla_7" />
+                android:src="@drawable/casilla7" />
 
             <ImageView
                 android:id="@+id/imageView12"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/casilla_8" />
+                android:src="@drawable/casilla8" />
             </LinearLayout>
             
              <TextView
                  android:id="@+id/textView7"
-                 android:layout_width="878dp"
-                 android:layout_height="78dp"
-                 android:layout_marginLeft="50dp"
-                 android:text="Los cuadros que se encuentran arriba representan las casillas que se mostrara con un nuemro adentro indicando cuantas minas estan a su alrededor "
-                 android:textAppearance="?android:attr/textAppearanceLarge"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:gravity="center"
+                 android:layout_marginLeft="100dp"
+                 android:layout_marginRight="100dp"
+                 android:text="Los cuadros que se encuentran arriba representan las casillas que se mostrara con un numero dentro, indicando cuantas minas estan a su alrededor. "
                  android:textSize="30sp" />
              
         </LinearLayout>
