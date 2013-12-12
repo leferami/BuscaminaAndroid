@@ -301,9 +301,10 @@ public class GameBuscamina extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
-				finish();
-				Pa.Pa.finish();
 				Ja.Ja.finish();
+				if(nivelBuscaminas.equals("Personalizado"))
+					Pa.Pa.finish();
+				finish();
 			}
 		}); 
 		adb.show();	
@@ -322,10 +323,12 @@ public class GameBuscamina extends Activity {
 			public void onClick(DialogInterface dialog, int which) {
 				// TODO Auto-generated method stub
 				nombreJugador = input.getText().toString();
+				Toast.makeText(GameBuscamina.this,"GANASTES EL JUEGO :",Toast.LENGTH_LONG).show();
 				escribirArchivo(""+nivelBuscaminas.toLowerCase(), ""+nombreJugador, ""+segundos);
-				finish();
-				Pa.Pa.finish();
 				Ja.Ja.finish();
+				if(nivelBuscaminas.equals("Personalizado"))
+					Pa.Pa.finish();
+				finish();
 			}
 		}); 
 		adb.show();	

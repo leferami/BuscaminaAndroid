@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import TableroBuscaminas.Jugador;
+import android.R.integer;
 import android.os.Bundle;
 import android.app.TabActivity;
 import android.view.Menu;
@@ -20,6 +21,7 @@ public class ScoreActivity extends TabActivity {
 	private TabHost contenedorPestana;
 	private TabSpec pestana;
 	private ArrayList<Jugador> listaJugador;
+	ArrayList<Jugador> jugadorNivel = new ArrayList<Jugador>();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -65,28 +67,36 @@ public class ScoreActivity extends TabActivity {
 				listaJugador = leerArchivo(tabId);
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
-				Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
-				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
+				try{
+					Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
+					escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
+				}catch(IOError io){}
 				
 			}else if(tabId.equals("intermedio")){
-				contenidoNombre.setText("");
-				contenidoTiempo.setText("");
-				listaJugador = leerArchivo(tabId);
-				Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
-				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
+					contenidoNombre.setText("");
+					contenidoTiempo.setText("");
+					listaJugador = leerArchivo(tabId);
+					try{
+						Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
+						escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
+					}catch(IOError io){}
 				
 			}else if(tabId.equals("dificil")){
 				listaJugador = leerArchivo(tabId);
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
-				Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
-				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
+				try{
+					Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
+					escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
+				}catch(IOError io){}
 			}else{
 				listaJugador = leerArchivo(tabId);
 				contenidoNombre.setText("");
 				contenidoTiempo.setText("");
-				Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
-				escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
+				try{
+					Collections.sort(listaJugador, Jugador.ValorComparatorAsc);
+					escribirContenido(listaJugador, contenidoNombre,contenidoTiempo);
+				}catch(IOError io){}
 			}
 		}
 	}
@@ -101,16 +111,17 @@ public class ScoreActivity extends TabActivity {
 	/**
 	 * Lee el archivo y guarada en una lista de Jugadores los nombre y los tiempos**/
 	public ArrayList<Jugador> leerArchivo(String niveles){
-		 ArrayList<Jugador> jugadorNivel = new ArrayList<Jugador>();
+		ArrayList<Jugador> jugadorNivel = new ArrayList<Jugador>();
 		 
 		 InputStreamReader flujo=null;
 	     BufferedReader lector=null;
 		 try {
 			 	flujo= new InputStreamReader(openFileInput(niveles+".txt"));
+			 	lector= new BufferedReader(flujo);
 	     }catch (FileNotFoundException ex) {
-	    	 Toast.makeText(ScoreActivity.this,"No se abrio el archivo ",Toast.LENGTH_LONG).show();
+	    	 Toast.makeText(ScoreActivity.this,"No existe el archivo ",Toast.LENGTH_LONG).show();
 	     }
-         lector= new BufferedReader(flujo);
+         
        
          int casilla=0;
          while(casilla < jugador.length){
@@ -118,7 +129,8 @@ public class ScoreActivity extends TabActivity {
 	           try {
 	        	   linea = lector.readLine();
 	           } catch (IOException ex) {}
-	           
+	           catch (NullPointerException e) {}
+	           catch (ArrayIndexOutOfBoundsException e) {}          
 	           if(linea == null){break;}
 	           else if(linea.equals("")){break;}
 	           
